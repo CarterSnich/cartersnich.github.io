@@ -1,0 +1,84 @@
+@import url(reset.css);
+
+main {
+  height: 100vh;
+  scroll-snap-type: y mandatory;
+  overflow-y: scroll;
+}
+
+section {
+  scroll-snap-align: start;
+  height: 100vh;
+}
+
+#hero {
+  display: grid;
+  place-content: center;
+  text-align: center;
+
+  img {
+    height: 256px;
+    margin: auto;
+  }
+
+  div:first-of-type {
+    margin-block: 3rem;
+  }
+
+  h1,
+  h2 {
+    margin: 0;
+  }
+
+  #links {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+
+    a {
+      color: black;
+      background-color: white;
+      border: 2px solid black;
+      padding: 4px;
+      font-size: 1.25rem;
+    }
+
+    a:hover {
+      border-color: blue;
+      color: blue;
+    }
+  }
+}
+
+#about-me {
+  padding: 3rem;
+
+  p {
+    font-size: 1.5rem;
+  }
+}
+
+#projects {
+  padding: 3rem;
+}
+
+.card-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: space-evenly;
+
+  .card {
+    width: 18rem;
+    height: 200px;
+    border: 2px solid black;
+  }
+}
+
+#contact {
+  padding: 3rem;
+
+  p {
+    font-size: 1.5rem;
+  }
+}
