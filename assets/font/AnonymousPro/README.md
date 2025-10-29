@@ -6,21 +6,27 @@ For more information see:
 * https://github.com/ryanoasis/nerd-fonts/
 * https://github.com/ryanoasis/nerd-fonts/releases/latest/
 
-# Tinos
+# Anonymous Pro
 
-**Tinos** was designed by Steve Matteson as an innovative, refreshing serif design that is metrically compatible with Times New Roman™. Tinos offers improved on-screen readability characteristics and the pan-European WGL character set and solves the needs of developers looking for width-compatible fonts to address document portability across platforms.
+**Anonymous Pro (2009)** is a family of four fixed-width fonts designed with coding in mind.
 
-For more information have a look at the upstream website: https://github.com/blobject/agave
+For more information have a look at the upstream website: https://www.marksimonson.com/fonts/view/anonymous-pro
 
-https://fonts.google.com/specimen/Tinos
+Version: 1.002
 
-Version: 1.23
+## Why `AnonymicePro` and not `Anonymous Pro`?
 
-## Terminal usage
+What's in a name? The reason for the name change is to comply with the SIL Open Font License (OFL), in particular the [Reserved Font Name mechanism][SIL-RFN]
 
-This font is not monospaced! The letter width differs and that will
-probably look strange in a terminal where each letter has to fit
-in the same 'cell'.
+Some fonts have parts of their name "reserved" per the [Reserved Font Name mechanism][SIL-RFN]:
+> No Modified Version of the Font Software may use the Reserved Font
+> Name(s) unless explicit written permission is granted by the corresponding
+> Copyright Holder. This restriction only applies to the primary font name as
+> presented to the users.
+
+- The main goals seem to be to: `Avoid collisions`, `Protect authors`, `Minimize support`, and `Encourage derivatives`
+
+See the [Reserved Font Name section][SIL-RFN] for additional information
 
 ## Which font?
 
