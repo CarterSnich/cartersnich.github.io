@@ -12,6 +12,7 @@ section {
 }
 
 #hero {
+  padding: 3rem;
   display: grid;
   place-content: center;
   text-align: center;
@@ -33,6 +34,7 @@ section {
   #links {
     display: flex;
     justify-content: center;
+    flex-flow: wrap;
     gap: 1rem;
 
     a {
@@ -41,11 +43,24 @@ section {
       border: 2px solid black;
       padding: 4px;
       font-size: 1.25rem;
+
+      outline: none;
     }
 
     a:hover {
       border-color: blue;
       color: blue;
+    }
+
+    a:focus {
+      border-color: blue;
+      color: blue;
+    }
+
+    a:active {
+      border-color: darkblue;
+      color: white;
+      background-color: darkblue;
     }
   }
 }
@@ -60,18 +75,18 @@ section {
 
 #projects {
   padding: 3rem;
-}
 
-.card-group {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-  justify-content: space-evenly;
+  .card-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: space-evenly;
 
-  .card {
-    width: 18rem;
-    height: 200px;
-    border: 2px solid black;
+    .card {
+      width: 18rem;
+      height: 200px;
+      border: 2px solid black;
+    }
   }
 }
 

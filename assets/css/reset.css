@@ -18,6 +18,11 @@ a {
   background-color: black;
 }
 
-a:hover {
+a:hover,
+a:focus {
   background-color: blue;
+}
+
+a:active {
+  background-color: darkblue;
 }
