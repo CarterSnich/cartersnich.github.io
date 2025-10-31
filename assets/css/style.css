@@ -113,7 +113,6 @@ section {
     }
 
     a:active {
-      border-color: darkblue;
       color: white;
       background-color: darkblue;
     }
@@ -128,9 +127,12 @@ section {
   padding: 3rem;
 
   .card-group {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    align-items: stretch;
+    grid-auto-flow: row dense;
     gap: 1rem;
+    box-sizing: border-box;
 
     .card {
       display: flex;
@@ -138,7 +140,6 @@ section {
       border: 2px solid black;
       padding: 1rem;
       gap: 1rem;
-      width: 300px;
 
       .card-img {
         margin-bottom: 1rem;
