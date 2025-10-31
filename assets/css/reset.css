@@ -17,16 +17,16 @@ a {
   text-decoration: none;
   position: relative;
   background-color: black;
-  padding-inline: 2px;
+  padding-inline: 4px;
 }
 
 a:hover,
 a:focus {
-  background-color: blue;
+  background-color: blue !important;
 }
 
 a:active {
-  background-color: darkblue;
+  background-color: darkblue !important;
 }
 
 code {
