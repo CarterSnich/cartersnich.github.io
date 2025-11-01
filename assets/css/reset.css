@@ -1,8 +1,11 @@
 @import url(font.css);
+@import url(colors.css);
 
 * {
   scroll-behavior: smooth;
   box-sizing: border-box;
+
+  outline: none;
 }
 
 body {
@@ -13,19 +16,21 @@ body {
 }
 
 a {
-  color: white;
+  color: var(--background);
   text-decoration: none;
   position: relative;
-  background-color: black;
+  background-color: var(--text);
   padding-inline: 4px;
 }
 
 a:hover,
 a:focus {
+  color: white;
   background-color: blue !important;
 }
 
 a:active {
+  color: white !important;
   background-color: darkblue !important;
 }
 

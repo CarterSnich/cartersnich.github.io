@@ -1,32 +1,28 @@
+const html = document.documentElement;
 const lightToggle = document.getElementById("light-toggle");
 const darkToggle = document.getElementById("dark-toggle");
 
+function setTheme(theme) {
+  html.setAttribute("data-theme", theme);
+  localStorage.setItem("theme", theme);
+}
+
 lightToggle.addEventListener("click", function (e) {
   e.preventDefault();
-  lightToggle.classList.add("active");
-  darkToggle.classList.remove("active");
-  document.body.classList.remove("dark");
-  localStorage.setItem("theme", "light");
+  setTheme("light");
   this.blur();
 });
 
 darkToggle.addEventListener("click", function (e) {
   e.preventDefault();
-  lightToggle.classList.remove("active");
-  darkToggle.classList.add("active");
-  document.body.classList.add("dark");
-  localStorage.setItem("theme", "dark");
+  setTheme("dark");
   this.blur();
 });
 
-const setTheme = localStorage.getItem("theme");
+const storedTheme = localStorage.getItem("theme");
 
-if (setTheme === null || setTheme === "dark") {
-  lightToggle.classList.remove("active");
-  darkToggle.classList.add("active");
-  document.body.classList.add("dark");
+if (storedTheme === null || storedTheme === "dark") {
+  html.setAttribute("data-theme", "dark");
 } else {
-  lightToggle.classList.add("active");
-  darkToggle.classList.remove("active");
-  document.body.classList.remove("dark");
+  html.setAttribute("data-theme", "light");
 }
