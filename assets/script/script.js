@@ -1,5 +1,5 @@
 const namesEl = document.getElementById("names");
-let nameChangeInterval;
+let nameChangeInterval = setInterval(nameChange, 3000);
 
 function nameChange() {
   const current = namesEl.querySelector(".show");
@@ -9,12 +9,8 @@ function nameChange() {
   current.classList.remove("show");
 }
 
-function newNameChangeInterval() {
-  nameChangeInterval = setInterval(nameChange, 5000);
-}
-
 namesEl.addEventListener("click", () => {
   nameChange();
   clearInterval(nameChangeInterval);
-  newNameChangeInterval();
+  nameChangeInterval = setInterval(nameChange, 3000);
 });
