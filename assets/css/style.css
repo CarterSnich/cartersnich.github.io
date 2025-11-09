@@ -20,7 +20,7 @@ body {
   .links {
     display: flex;
     gap: 0.25rem;
-  padding: 0.25rem;
+    padding: 0.25rem;
   }
 
   .separator {
@@ -66,4 +66,8 @@ html[data-theme="dark"] {
     color: white;
     background-color: blue;
   }
+}
+
+.nf-icon {
+  padding-right: 0.25rem;
 }
