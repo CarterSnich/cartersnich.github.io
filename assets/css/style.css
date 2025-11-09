@@ -11,14 +11,28 @@ body {
   left: 0;
   right: 0;
   background-color: var(--background);
-
-  display: flex;
-  padding: 0.25rem;
-
   z-index: 1;
 
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .links {
+    display: flex;
+    gap: 0.25rem;
+  padding: 0.25rem;
+  }
+
+  .separator {
+    height: auto;
+    width: 1px;
+    background-color: var(--text);
+  }
+
   #theme-toggle {
-    margin-left: auto;
+    display: flex;
+    gap: 0.25rem;
+    padding: 0.25rem;
 
     a:hover,
     a:focus {
