@@ -5,12 +5,132 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Joe Mar's Portfolio</title>
 
-    <link rel="stylesheet" href="assets/css/reset.css" />
     <link rel="stylesheet" href="assets/css/style.css" />
+
+    <style>
+      #app {
+        height: 100vh;
+        scroll-snap-type: y proximity;
+        overflow-y: scroll;
+      }
+
+      section {
+        scroll-snap-align: start;
+        min-height: 100vh;
+      }
+
+      #hero {
+        padding: 3rem;
+        display: grid;
+        place-content: center;
+        text-align: center;
+
+        img {
+          height: 256px;
+          margin: auto;
+        }
+
+        #title {
+          margin-block: 3rem;
+        }
+
+        h1,
+        h2 {
+          margin: 0;
+        }
+
+        #names {
+          display: grid;
+          place-content: center;
+          cursor: pointer;
+
+          span {
+            grid-column: 1;
+            grid-row: 1;
+            opacity: 0;
+            transition: opacity ease-in-out 300ms;
+          }
+
+          .show {
+            opacity: 1 !important;
+          }
+        }
+
+        #links {
+          display: flex;
+          justify-content: center;
+          flex-flow: wrap;
+          gap: 1rem;
+
+          a {
+            color: var(--text);
+            background-color: var(--background);
+            border: 2px solid var(--border);
+            padding: 4px;
+            outline: none;
+            font-size: 1.25rem;
+          }
+
+          a:hover,
+          a:focus {
+            color: white;
+          }
+
+          a:active {
+            color: white;
+            background-color: darkblue;
+          }
+        }
+      }
+
+      #about-me {
+        padding: 3rem;
+      }
+
+      #projects {
+        padding: 3rem;
+
+        .card-group {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+          align-items: stretch;
+          grid-auto-flow: row dense;
+          gap: 1rem;
+          box-sizing: border-box;
+
+          .card {
+            display: flex;
+            flex-direction: column;
+            color: var(--text);
+            background-color: var(--background);
+            border: 2px solid var(--border);
+            padding: 1rem;
+            gap: 1rem;
+
+            .card-img {
+              margin-bottom: 1rem;
+            }
+
+            .card-title {
+              font-size: 1.5rem;
+            }
+          }
+
+          .card:hover,
+          .card:focus {
+            color: white;
+          }
+        }
+      }
+
+      #contact {
+        padding: 3rem;
+      }
+    </style>
   </head>
 
   <body>
-    <main>
+    <div id="app">
       <div id="nav">
         <a href="#hero">Top</a> | <a href="#about-me">About me</a> |
         <a href="#projects">Projects</a> | <a href="#contact">Contact</a> |
@@ -20,6 +140,7 @@
           <a href="#" id="dark-toggle">Dark</a>
         </div>
       </div>
+
       <section id="hero">
         <img src="assets/img/me.jpg" alt="me" />
         <div id="title">
@@ -131,7 +252,7 @@
           <a href="tel:+639619601674" target="_blank"> +63 (961) 9601 674</a>
         </p>
       </section>
-    </main>
+    </div>
 
     <script src="assets/script/script.js"></script>
     <script src="assets/script/theme-toggle.js"></script>
