@@ -15,12 +15,12 @@
       }
 
       section {
+        padding: 3rem;
         scroll-snap-align: start;
         min-height: 100vh;
       }
 
       #hero {
-        padding: 3rem;
         display: grid;
         place-content: center;
         text-align: center;
@@ -84,12 +84,9 @@
       }
 
       #about-me {
-        padding: 3rem;
       }
 
       #projects {
-        padding: 3rem;
-
         .card-group {
           display: grid;
           grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -123,8 +120,15 @@
         }
       }
 
+      #pages {
+        .links > a {
+          display: inline-block;
+          margin-bottom: 1rem;
+          margin-right: 1rem;
+        }
+      }
+
       #contact {
-        padding: 3rem;
       }
     </style>
   </head>
@@ -166,7 +170,7 @@
         <div id="links">
           <a href="#about-me">About Me</a>
           <a href="#projects">Projects</a>
-          <a href="linux-distro-log.html">My Linux Distro Log</a>
+          <a href="#pages">Extra pages</a>
           <a href="#contact">Contact</a>
         </div>
       </section>
@@ -257,6 +261,15 @@
           </a>
         </div>
       </section>
+
+      <section id="pages">
+        <h2>Extra pages</h2>
+        <div class="links">
+          <a href="pages/linux-distro-log.html">My Linux Distro Log</a>
+          <a href="pages/periodic-table.html">Periodic Table</a>
+        </div>
+      </section>
+
       <section id="contact">
         <h2>Contact</h2>
         <p>
