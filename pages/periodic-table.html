@@ -686,9 +686,16 @@
 
     <script src="../assets/script/theme-toggle.js"></script>
     <script type="module">
-      const request = await fetch("../assets/periodic-table-lookup.json");
-      const response = await request.json();
-      const periodicTable = response;
+      let periodicTable = null;
+      try {
+        const request = await fetch("../assets/periodic-table-lookup.json");
+        const response = await request.json();
+        periodicTable = response;
+      } catch (e) {
+        alert(
+          "Failed to fetch periodic table data. Refresh the page to try again."
+        );
+      }
 
       const details = document.getElementById("details");
 
@@ -716,6 +723,12 @@
 
       document.querySelectorAll(".element").forEach(function (el) {
         el.addEventListener("click", function () {
+          if (periodicTable === null) {
+            alert(
+              "Periodic table data is not loaded. Try loading it by reloading the page."
+            );
+            return;
+          }
           const elementDetails = periodicTable[el.getAttribute("data-name")];
           details.innerHTML = `
           <small>
