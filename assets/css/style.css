@@ -67,5 +67,6 @@ html[data-theme="dark"] {
 }
 
 .nf-icon {
+  font-family: "Anonymice Pro Nerd Font";
   padding-right: 0.25rem;
 }
