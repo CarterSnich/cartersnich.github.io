@@ -185,14 +185,10 @@
               <td class="group">1</td>
               <td></td>
               <td colspan="10" rowspan="3">
-                <div id="details">
-                  <div>
-                    <small>Click an element to show more details.</small><br />
-                    <small>
-                      Press LANTHANIDES or ACTINIDES to show hidden elements.
-                    </small>
-                  </div>
-                </div>
+                <small id="details">
+                  Click an element to show more details.<br />
+                  Press LANTHANIDES or ACTINIDES to show hidden elements.
+                </small>
               </td>
               <td colspan="5"></td>
               <td class="group">18</td>
@@ -782,13 +778,11 @@
             return;
           }
           const elementDetails = periodicTable[el.getAttribute("data-name")];
-          details.innerHTML = `
-          <small>
-            Name: ${elementDetails.name} (${elementDetails.symbol})<br>
-            Atomic number: ${elementDetails.number}<br>
-            Atomic mass: ${elementDetails.atomic_mass}<br>
+          details.innerText = `
+            Name: ${elementDetails.name} (${elementDetails.symbol})
+            Atomic number: ${elementDetails.number}
+            Atomic mass: ${elementDetails.atomic_mass}
             Summary: ${elementDetails.summary}
-          </small>
           `;
         });
       });
