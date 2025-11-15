@@ -19,13 +19,14 @@
         margin-bottom: 1rem;
 
         tr > td.element {
-          cursor: pointer;
           max-height: var(--cell-size);
           max-width: var(--cell-size);
           min-height: var(--cell-size);
           min-width: var(--cell-size);
           height: var(--cell-size);
           width: var(--cell-size);
+
+          cursor: pointer;
           border: 2px solid var(--text);
           text-align: center;
           font-size: 1.25rem;
@@ -34,14 +35,18 @@
           small {
             display: block;
             font-size: 0.05rem !important;
+            text-align: center;
           }
         }
 
         tr > td.group {
-          max-height: 1rem;
-          height: 1rem;
+          max-height: 1rem !important;
+          height: 1rem !important;
           vertical-align: bottom;
           text-align: center;
+        }
+
+        tr > td.period {
         }
 
         tr > td[colspan] {
@@ -79,6 +84,24 @@
         tr > td#actinides.active {
           background-color: red;
           color: white;
+        }
+      }
+
+      #details {
+        display: grid;
+        place-content: center;
+        padding: 0.5rem;
+      }
+
+      #legend {
+        display: flex;
+        gap: 0.5rem;
+        flex-wrap: wrap;
+        justify-content: space-between;
+
+        span {
+          padding: 0.25rem;
+          font-weight: bolder;
         }
       }
 
@@ -130,21 +153,6 @@
         background-color: red;
         color: white;
       }
-
-      #details {
-        display: grid;
-        place-content: center;
-        padding: 0.5rem;
-      }
-
-      #legend {
-        span {
-          display: inline-block;
-          margin-right: 0.25rem;
-          margin-bottom: 0.5rem;
-          padding: 0.25rem;
-        }
-      }
     </style>
   </head>
 
@@ -165,493 +173,510 @@
       <main>
         <h1>Periodic Table</h1>
 
-        <!-- it can't be called periodic "table" if it's not a <table /> -->
-        <table>
-          <tr>
-            <td class="group"></td>
-            <td class="group">1</td>
-            <td colspan="16"></td>
-            <td class="group">18</td>
-          </tr>
-          <tr>
-            <td class="period">1</td>
-            <td class="element nonmetal" data-name="hydrogen">
-              H
-              <small>Hydrogen</small>
-            </td>
-            <td class="group">2</td>
-            <td colspan="10" rowspan="2">
-              <div id="details">
-                <div>
-                  <small>Click an element to show more details.</small><br />
-                  <small>
-                    Press LANTHANIDES or ACTINIDES to show elements hidden
-                    elements.
-                  </small>
+        <div>
+          <!-- it can't be called periodic "table" if it's not a <table /> -->
+          <table>
+            <tr>
+              <td class="group"></td>
+              <td class="group">1</td>
+              <td></td>
+              <td colspan="10" rowspan="3">
+                <div id="details">
+                  <div>
+                    <small>Click an element to show more details.</small><br />
+                    <small>
+                      Press LANTHANIDES or ACTINIDES to show elements hidden
+                      elements.
+                    </small>
+                  </div>
                 </div>
-              </div>
-            </td>
-            <td class="group">13</td>
-            <td class="group">14</td>
-            <td class="group">15</td>
-            <td class="group">16</td>
-            <td class="group">17</td>
-            <td class="element noble-gas" data-name="helium">
-              He
-              <small>Helium</small>
-            </td>
-          </tr>
-          <tr>
-            <td class="period">2</td>
-            <td class="element alkali" data-name="lithium">
-              Li <small>Lithium</small>
-            </td>
-            <td class="element alkaline" data-name="beryllium">
-              Be <small>Beryllium</small>
-            </td>
+              </td>
+              <td colspan="5"></td>
+              <td class="group">18</td>
+            </tr>
+            <tr>
+              <td class="period">1</td>
+              <td class="element nonmetal" data-name="hydrogen">
+                H
+                <small>Hydrogen</small>
+              </td>
+              <td class="group">2</td>
+              <td class="group">13</td>
+              <td class="group">14</td>
+              <td class="group">15</td>
+              <td class="group">16</td>
+              <td class="group">17</td>
+              <td class="element noble-gas" data-name="helium">
+                He
+                <small>Helium</small>
+              </td>
+            </tr>
+            <tr>
+              <td class="period">2</td>
+              <td class="element alkali" data-name="lithium">
+                Li <small>Lithium</small>
+              </td>
+              <td class="element alkaline" data-name="beryllium">
+                Be <small>Beryllium</small>
+              </td>
 
-            <td class="element metalloid" data-name="boron">
-              B <small>Boron</small>
-            </td>
-            <td class="element nonmetal" data-name="carbon">
-              C <small>Carbon</small>
-            </td>
-            <td class="element nonmetal" data-name="nitrogen">
-              N <small>Nitrogen</small>
-            </td>
-            <td class="element nonmetal" data-name="oxygen">
-              O <small>Oxygen</small>
-            </td>
-            <td class="element halogen" data-name="fluorine">
-              F <small>Fluorine</small>
-            </td>
-            <td class="element noble-gas" data-name="neon">
-              Ne <small>Neon</small>
-            </td>
-          </tr>
-          <tr>
-            <td class="period">3</td>
-            <td class="element alkali" data-name="sodium">
-              Na <small>Sodium</small>
-            </td>
-            <td class="element alkaline" data-name="magnesium">
-              Mg <small>Magnesium</small>
-            </td>
-            <td class="group">3</td>
-            <td class="group">4</td>
-            <td class="group">5</td>
-            <td class="group">6</td>
-            <td class="group">7</td>
-            <td class="group">8</td>
-            <td class="group">9</td>
-            <td class="group">10</td>
-            <td class="group">11</td>
-            <td class="group">12</td>
+              <td class="element metalloid" data-name="boron">
+                B <small>Boron</small>
+              </td>
+              <td class="element nonmetal" data-name="carbon">
+                C <small>Carbon</small>
+              </td>
+              <td class="element nonmetal" data-name="nitrogen">
+                N <small>Nitrogen</small>
+              </td>
+              <td class="element nonmetal" data-name="oxygen">
+                O <small>Oxygen</small>
+              </td>
+              <td class="element halogen" data-name="fluorine">
+                F <small>Fluorine</small>
+              </td>
+              <td class="element noble-gas" data-name="neon">
+                Ne <small>Neon</small>
+              </td>
+            </tr>
+            <tr>
+              <td class="period">3</td>
+              <td class="element alkali" data-name="sodium">
+                Na <small>Sodium</small>
+              </td>
+              <td class="element alkaline" data-name="magnesium">
+                Mg <small>Magnesium</small>
+              </td>
+              <td class="group">3</td>
+              <td class="group">4</td>
+              <td class="group">5</td>
+              <td class="group">6</td>
+              <td class="group">7</td>
+              <td class="group">8</td>
+              <td class="group">9</td>
+              <td class="group">10</td>
+              <td class="group">11</td>
+              <td class="group">12</td>
 
-            <td class="element post-transition-metal" data-name="aluminium">
-              Al <small>Aluminium</small>
-            </td>
-            <td class="element metalloid" data-name="silicon">
-              Si <small>Silicon</small>
-            </td>
-            <td class="element nonmetal" data-name="phosphorus">
-              P <small>Phosphorus</small>
-            </td>
-            <td class="element nonmetal" data-name="sulfur">
-              S <small>Sulfur</small>
-            </td>
-            <td class="element halogen" data-name="chlorine">
-              Cl <small>Chlorine</small>
-            </td>
-            <td class="element noble-gas" data-name="argon">
-              Ar <small>Argon</small>
-            </td>
-          </tr>
-          <tr>
-            <td class="period">4</td>
-            <td class="element alkali" data-name="potassium">
-              K <small>Potassium</small>
-            </td>
-            <td class="element alkaline" data-name="calcium">
-              Ca <small>Calcium</small>
-            </td>
-            <td class="element transition-metal" data-name="scandium">
-              Sc <small>Scandium</small>
-            </td>
-            <td class="element transition-metal" data-name="titanium">
-              Ti <small>Titanium</small>
-            </td>
-            <td class="element transition-metal" data-name="vanadium">
-              V <small>Vanadium</small>
-            </td>
-            <td class="element transition-metal" data-name="chromium">
-              Cr <small>Chromium</small>
-            </td>
-            <td class="element transition-metal" data-name="manganese">
-              Mn <small>Manganese</small>
-            </td>
-            <td class="element transition-metal" data-name="iron">
-              Fe <small>Fron</small>
-            </td>
-            <td class="element transition-metal" data-name="cobalt">
-              Co <small>Cobalt</small>
-            </td>
-            <td class="element transition-metal" data-name="nickel">
-              Ni <small>Nickel</small>
-            </td>
-            <td class="element transition-metal" data-name="copper">
-              Cu <small>Copper</small>
-            </td>
-            <td class="element transition-metal" data-name="zinc">
-              Zn <small>Zinc</small>
-            </td>
-            <td class="element post-transition-metal" data-name="gallium">
+              <td class="element post-transition-metal" data-name="aluminium">
+                Al <small>Aluminium</small>
+              </td>
+              <td class="element metalloid" data-name="silicon">
+                Si <small>Silicon</small>
+              </td>
+              <td class="element nonmetal" data-name="phosphorus">
+                P <small>Phosphorus</small>
+              </td>
+              <td class="element nonmetal" data-name="sulfur">
+                S <small>Sulfur</small>
+              </td>
+              <td class="element halogen" data-name="chlorine">
+                Cl <small>Chlorine</small>
+              </td>
+              <td class="element noble-gas" data-name="argon">
+                Ar <small>Argon</small>
+              </td>
+            </tr>
+            <tr>
+              <td class="period">4</td>
+              <td class="element alkali" data-name="potassium">
+                K <small>Potassium</small>
+              </td>
+              <td class="element alkaline" data-name="calcium">
+                Ca <small>Calcium</small>
+              </td>
+              <td class="element transition-metal" data-name="scandium">
+                Sc <small>Scandium</small>
+              </td>
+              <td class="element transition-metal" data-name="titanium">
+                Ti <small>Titanium</small>
+              </td>
+              <td class="element transition-metal" data-name="vanadium">
+                V <small>Vanadium</small>
+              </td>
+              <td class="element transition-metal" data-name="chromium">
+                Cr <small>Chromium</small>
+              </td>
+              <td class="element transition-metal" data-name="manganese">
+                Mn <small>Manganese</small>
+              </td>
+              <td class="element transition-metal" data-name="iron">
+                Fe <small>Fron</small>
+              </td>
+              <td class="element transition-metal" data-name="cobalt">
+                Co <small>Cobalt</small>
+              </td>
+              <td class="element transition-metal" data-name="nickel">
+                Ni <small>Nickel</small>
+              </td>
+              <td class="element transition-metal" data-name="copper">
+                Cu <small>Copper</small>
+              </td>
+              <td class="element transition-metal" data-name="zinc">
+                Zn <small>Zinc</small>
+              </td>
+              <td class="element post-transition-metal" data-name="gallium">
                 Ga <small>Gallium</small>
-            </td>
-            <td class="element metalloid" data-name="germanium">
-              Ge <small>Germanium</small>
-            </td>
-            <td class="element metalloid" data-name="arsenic">
-              As <small>Arsenic</small>
-            </td>
-            <td class="element nonmetal" data-name="selenium">
-              Se <small>Selenium</small>
-            </td>
-            <td class="element halogen" data-name="bromine">
-              Br <small>Bromine</small>
-            </td>
-            <td class="element noble-gas" data-name="krypton">
-              Kr <small>Krypton</small>
-            </td>
-          </tr>
-          <tr>
-            <td class="period">5</td>
-            <td class="element alkali" data-name="rubidium">
-              Rb <small>Rubidium</small>
-            </td>
-            <td class="element alkaline" data-name="strontium">
-              Sr <small>Strontium</small>
-            </td>
-            <td class="element transition-metal" data-name="yttrium">
-              Y <small>Yttrium</small>
-            </td>
-            <td class="element transition-metal" data-name="zirconium">
-              Zr <small>Zirconium</small>
-            </td>
-            <td class="element transition-metal" data-name="niobium">
-              Nb <small>Niobium</small>
-            </td>
-            <td class="element transition-metal" data-name="molybdenum">
-              Mo <small>Molybdenum</small>
-            </td>
-            <td class="element transition-metal" data-name="technetium">
-              Tc <small>Technetium</small>
-            </td>
-            <td class="element transition-metal" data-name="ruthenium">
-              Ru <small>Ruthenium</small>
-            </td>
-            <td class="element transition-metal" data-name="rhodium">
-              Rh <small>Rhodium</small>
-            </td>
-            <td class="element transition-metal" data-name="palladium">
-              Pd <small>Palladium</small>
-            </td>
-            <td class="element transition-metal" data-name="silver">
-              Ag <small>Silver</small>
-            </td>
-            <td class="element transition-metal" data-name="cadmium">
-              Cd <small>Cadmium</small>
-            </td>
-            <td class="element post-transition-metal" data-name="indium">
-              In <small>Indium</small>
-            </td>
-            <td class="element post-transition-metal" data-name="tin">
-              Sn <small>Tin</small>
-            </td>
-            <td class="element metalloid" data-name="antimony">
-              Sb <small>Antimony</small>
-            </td>
-            <td class="element metalloid" data-name="tellurium">
-              Te <small>Tellurium</small>
-            </td>
-            <td class="element halogen" data-name="iodine">
-              I <small>Iodine</small>
-            </td>
-            <td class="element noble-gas" data-name="xenon">
-              Xe <small>Xenon</small>
-            </td>
-          </tr>
-          <tr>
-            <td class="period">6</td>
-            <td class="element alkali" data-name="cesium">
-              Cs <small>Cesium</small>
-            </td>
+              </td>
+              <td class="element metalloid" data-name="germanium">
+                Ge <small>Germanium</small>
+              </td>
+              <td class="element metalloid" data-name="arsenic">
+                As <small>Arsenic</small>
+              </td>
+              <td class="element nonmetal" data-name="selenium">
+                Se <small>Selenium</small>
+              </td>
+              <td class="element halogen" data-name="bromine">
+                Br <small>Bromine</small>
+              </td>
+              <td class="element noble-gas" data-name="krypton">
+                Kr <small>Krypton</small>
+              </td>
+            </tr>
+            <tr>
+              <td class="period">5</td>
+              <td class="element alkali" data-name="rubidium">
+                Rb <small>Rubidium</small>
+              </td>
+              <td class="element alkaline" data-name="strontium">
+                Sr <small>Strontium</small>
+              </td>
+              <td class="element transition-metal" data-name="yttrium">
+                Y <small>Yttrium</small>
+              </td>
+              <td class="element transition-metal" data-name="zirconium">
+                Zr <small>Zirconium</small>
+              </td>
+              <td class="element transition-metal" data-name="niobium">
+                Nb <small>Niobium</small>
+              </td>
+              <td class="element transition-metal" data-name="molybdenum">
+                Mo <small>Molybdenum</small>
+              </td>
+              <td class="element transition-metal" data-name="technetium">
+                Tc <small>Technetium</small>
+              </td>
+              <td class="element transition-metal" data-name="ruthenium">
+                Ru <small>Ruthenium</small>
+              </td>
+              <td class="element transition-metal" data-name="rhodium">
+                Rh <small>Rhodium</small>
+              </td>
+              <td class="element transition-metal" data-name="palladium">
+                Pd <small>Palladium</small>
+              </td>
+              <td class="element transition-metal" data-name="silver">
+                Ag <small>Silver</small>
+              </td>
+              <td class="element transition-metal" data-name="cadmium">
+                Cd <small>Cadmium</small>
+              </td>
+              <td class="element post-transition-metal" data-name="indium">
+                In <small>Indium</small>
+              </td>
+              <td class="element post-transition-metal" data-name="tin">
+                Sn <small>Tin</small>
+              </td>
+              <td class="element metalloid" data-name="antimony">
+                Sb <small>Antimony</small>
+              </td>
+              <td class="element metalloid" data-name="tellurium">
+                Te <small>Tellurium</small>
+              </td>
+              <td class="element halogen" data-name="iodine">
+                I <small>Iodine</small>
+              </td>
+              <td class="element noble-gas" data-name="xenon">
+                Xe <small>Xenon</small>
+              </td>
+            </tr>
+            <tr>
+              <td class="period">6</td>
+              <td class="element alkali" data-name="cesium">
+                Cs <small>Cesium</small>
+              </td>
               <td class="element alkaline" data-name="barium">
                 Ba
                 <small>Barium</small>
               </td>
-            <td id="lanthanides" tabindex="0">
-              <div>LANTHANIDES</div>
-            </td>
-            <!-- hide when showing lanthanides, starting from here ... -->
-            <td
-              class="element lanthanides-switch transition-metal"
-              data-name="hafnium">
-              Hf <small>Hafnium</small>
-            </td>
-            <td
-              class="element lanthanides-switch transition-metal"
-              data-name="tantalum">
-              Ta <small>Tantalum</small>
-            </td>
-            <td
-              class="element lanthanides-switch transition-metal"
-              data-name="tungsten">
-              W <small>Tungsten</small>
-            </td>
-            <td
-              class="element lanthanides-switch transition-metal"
-              data-name="rhenium">
-              Re <small>Rhenium</small>
-            </td>
-            <td
-              class="element lanthanides-switch transition-metal"
-              data-name="osmium">
-              Os <small>Osmium</small>
-            </td>
-            <td
-              class="element lanthanides-switch transition-metal"
-              data-name="iridium">
-              Ir <small>Iridium</small>
-            </td>
-            <td
-              class="element lanthanides-switch transition-metal"
-              data-name="platinum">
-              Pt <small>Platinum</small>
-            </td>
-            <td
-              class="element lanthanides-switch transition-metal"
-              data-name="gold">
-              Au <small>Gold</small>
-            </td>
-            <td
-              class="element lanthanides-switch transition-metal"
-              data-name="mercury">
-              Hg <small>Mercury</small>
-            </td>
-            <td
-              class="element lanthanides-switch post-transition-metal"
-              data-name="thallium">
-              Tl <small>Thallium</small>
-            </td>
-            <td
-              class="element lanthanides-switch post-transition-metal"
-              data-name="lead">
-              Pb <small>Lead</small>
-            </td>
-            <td
-              class="element lanthanides-switch post-transition-metal"
-              data-name="bismuth">
-              Bi <small>Bismuth</small>
-            </td>
-            <td
-              class="element lanthanides-switch metalloid"
-              data-name="polonium">
-              Po <small>Polonium</small>
-            </td>
-            <td class="element lanthanides-switch halogen" data-name="astatine">
-              At <small>Astatine</small>
-            </td>
-            <td class="element lanthanides-switch noble-gas" data-name="radon">
-              Rn <small>Radon</small>
-            </td>
-            <!-- ... ends in here -->
+              <td id="lanthanides" tabindex="0">
+                <div>LANTHANIDES</div>
+              </td>
+              <!-- hide when showing lanthanides, starting from here ... -->
+              <td
+                class="element lanthanides-switch transition-metal"
+                data-name="hafnium">
+                Hf <small>Hafnium</small>
+              </td>
+              <td
+                class="element lanthanides-switch transition-metal"
+                data-name="tantalum">
+                Ta <small>Tantalum</small>
+              </td>
+              <td
+                class="element lanthanides-switch transition-metal"
+                data-name="tungsten">
+                W <small>Tungsten</small>
+              </td>
+              <td
+                class="element lanthanides-switch transition-metal"
+                data-name="rhenium">
+                Re <small>Rhenium</small>
+              </td>
+              <td
+                class="element lanthanides-switch transition-metal"
+                data-name="osmium">
+                Os <small>Osmium</small>
+              </td>
+              <td
+                class="element lanthanides-switch transition-metal"
+                data-name="iridium">
+                Ir <small>Iridium</small>
+              </td>
+              <td
+                class="element lanthanides-switch transition-metal"
+                data-name="platinum">
+                Pt <small>Platinum</small>
+              </td>
+              <td
+                class="element lanthanides-switch transition-metal"
+                data-name="gold">
+                Au <small>Gold</small>
+              </td>
+              <td
+                class="element lanthanides-switch transition-metal"
+                data-name="mercury">
+                Hg <small>Mercury</small>
+              </td>
+              <td
+                class="element lanthanides-switch post-transition-metal"
+                data-name="thallium">
+                Tl <small>Thallium</small>
+              </td>
+              <td
+                class="element lanthanides-switch post-transition-metal"
+                data-name="lead">
+                Pb <small>Lead</small>
+              </td>
+              <td
+                class="element lanthanides-switch post-transition-metal"
+                data-name="bismuth">
+                Bi <small>Bismuth</small>
+              </td>
+              <td
+                class="element lanthanides-switch metalloid"
+                data-name="polonium">
+                Po <small>Polonium</small>
+              </td>
+              <td
+                class="element lanthanides-switch halogen"
+                data-name="astatine">
+                At <small>Astatine</small>
+              </td>
+              <td
+                class="element lanthanides-switch noble-gas"
+                data-name="radon">
+                Rn <small>Radon</small>
+              </td>
+              <!-- ... ends in here -->
 
-            <!-- lanthanides -->
-            <td class="element lanthanide hide" data-name="lanthanum">
-              La <small>Lanthanum</small>
-            </td>
-            <td class="element lanthanide hide" data-name="cerium">
-              Ce <small>Cerium</small>
-            </td>
-            <td class="element lanthanide hide" data-name="praseodymium">
-              Pr <small>Praseodymium</small>
-            </td>
-            <td class="element lanthanide hide" data-name="neodymium">
-              Nd <small>Neodymium</small>
-            </td>
-            <td class="element lanthanide hide" data-name="promethium">
-              Pm <small>Promethium</small>
-            </td>
-            <td class="element lanthanide hide" data-name="samarium">
-              Sm <small>Samarium</small>
-            </td>
-            <td class="element lanthanide hide" data-name="europium">
-              Eu <small>Europium</small>
-            </td>
-            <td class="element lanthanide hide" data-name="gadolinium">
-              Gd <small>Gadolinium</small>
-            </td>
-            <td class="element lanthanide hide" data-name="terbium">
-              Tb <small>Terbium</small>
-            </td>
-            <td class="element lanthanide hide" data-name="dysprosium">
-              Dy <small>Dysprosium</small>
-            </td>
-            <td class="element lanthanide hide" data-name="holmium">
-              Ho <small>Holmium</small>
-            </td>
-            <td class="element lanthanide hide" data-name="erbium">
-              Er <small>Erbium</small>
-            </td>
-            <td class="element lanthanide hide" data-name="thulium">
-              Tm <small>Thulium</small>
-            </td>
-            <td class="element lanthanide hide" data-name="ytterbium">
-              Yb <small>Ytterbium</small>
-            </td>
-            <td class="element lanthanide hide" data-name="lutetium">
-              Lu <small>Lutetium</small>
-            </td>
-          </tr>
-          <tr>
-            <td class="period">7</td>
-            <td class="element alkali" data-name="francium">
-              Fr <small>Francium</small>
-            </td>
-            <td class="element alkaline" data-name="radium">
-              Ra <small>Radium</small>
-            </td>
-            <td id="actinides" tabindex="0">
-              <div>ACTINIDES</div>
-            </td>
-            <!-- hide when showing actinides, starting from here ... -->
-            <td
-              class="element actinides-switch transition-metal"
-              data-name="rutherfordium">
-              Rf <small>Rutherfordium</small>
-            </td>
-            <td
-              class="element actinides-switch transition-metal"
-              data-name="dubnium">
-              Db <small>Dubnium</small>
-            </td>
-            <td
-              class="element actinides-switch transition-metal"
-              data-name="seaborgium">
-              Sg <small>Seaborgium</small>
-            </td>
-            <td
-              class="element actinides-switch transition-metal"
-              data-name="bohrium">
-              Bh <small>Bohrium</small>
-            </td>
-            <td
-              class="element actinides-switch transition-metal"
-              data-name="hassium">
-              Hs <small>Hassium</small>
-            </td>
-            <td class="element actinides-switch unknown" data-name="meitnerium">
-              Mt <small>Meitnerium</small>
-            </td>
-            <td
-              class="element actinides-switch unknown"
-              data-name="darmstadtium">
-              Ds <small>Darmstadtium</small>
-            </td>
-            <td
-              class="element actinides-switch unknown"
-              data-name="roentgenium">
-              Rg <small>Roentgenium</small>
-            </td>
-            <td
-              class="element actinides-switch transition-metal"
-              data-name="copernicium">
-              Cn <small>Copernicium</small>
-            </td>
-            <td class="element actinides-switch unknown" data-name="nihonium">
-              Nh <small>Nihonium</small>
-            </td>
-            <td class="element actinides-switch unknown" data-name="flerovium">
-              Fl <small>Flerovium</small>
-            </td>
-            <td class="element actinides-switch unknown" data-name="moscovium">
-              Mc <small>Moscovium</small>
-            </td>
-            <td
-              class="element actinides-switch unknown"
-              data-name="livermorium">
-              Lv <small>Livermorium</small>
-            </td>
-            <td class="element actinides-switch unknown" data-name="tennessine">
-              Ts <small>Tennessine</small>
-            </td>
-            <td class="element actinides-switch unknown" data-name="oganesson">
-              Og <small>Oganesson</small>
-            </td>
-            <!-- ... ends in here -->
+              <!-- lanthanides -->
+              <td class="element lanthanide hide" data-name="lanthanum">
+                La <small>Lanthanum</small>
+              </td>
+              <td class="element lanthanide hide" data-name="cerium">
+                Ce <small>Cerium</small>
+              </td>
+              <td class="element lanthanide hide" data-name="praseodymium">
+                Pr <small>Praseodymium</small>
+              </td>
+              <td class="element lanthanide hide" data-name="neodymium">
+                Nd <small>Neodymium</small>
+              </td>
+              <td class="element lanthanide hide" data-name="promethium">
+                Pm <small>Promethium</small>
+              </td>
+              <td class="element lanthanide hide" data-name="samarium">
+                Sm <small>Samarium</small>
+              </td>
+              <td class="element lanthanide hide" data-name="europium">
+                Eu <small>Europium</small>
+              </td>
+              <td class="element lanthanide hide" data-name="gadolinium">
+                Gd <small>Gadolinium</small>
+              </td>
+              <td class="element lanthanide hide" data-name="terbium">
+                Tb <small>Terbium</small>
+              </td>
+              <td class="element lanthanide hide" data-name="dysprosium">
+                Dy <small>Dysprosium</small>
+              </td>
+              <td class="element lanthanide hide" data-name="holmium">
+                Ho <small>Holmium</small>
+              </td>
+              <td class="element lanthanide hide" data-name="erbium">
+                Er <small>Erbium</small>
+              </td>
+              <td class="element lanthanide hide" data-name="thulium">
+                Tm <small>Thulium</small>
+              </td>
+              <td class="element lanthanide hide" data-name="ytterbium">
+                Yb <small>Ytterbium</small>
+              </td>
+              <td class="element lanthanide hide" data-name="lutetium">
+                Lu <small>Lutetium</small>
+              </td>
+            </tr>
+            <tr>
+              <td class="period">7</td>
+              <td class="element alkali" data-name="francium">
+                Fr <small>Francium</small>
+              </td>
+              <td class="element alkaline" data-name="radium">
+                Ra <small>Radium</small>
+              </td>
+              <td id="actinides" tabindex="0">
+                <div>ACTINIDES</div>
+              </td>
+              <!-- hide when showing actinides, starting from here ... -->
+              <td
+                class="element actinides-switch transition-metal"
+                data-name="rutherfordium">
+                Rf <small>Rutherfordium</small>
+              </td>
+              <td
+                class="element actinides-switch transition-metal"
+                data-name="dubnium">
+                Db <small>Dubnium</small>
+              </td>
+              <td
+                class="element actinides-switch transition-metal"
+                data-name="seaborgium">
+                Sg <small>Seaborgium</small>
+              </td>
+              <td
+                class="element actinides-switch transition-metal"
+                data-name="bohrium">
+                Bh <small>Bohrium</small>
+              </td>
+              <td
+                class="element actinides-switch transition-metal"
+                data-name="hassium">
+                Hs <small>Hassium</small>
+              </td>
+              <td
+                class="element actinides-switch unknown"
+                data-name="meitnerium">
+                Mt <small>Meitnerium</small>
+              </td>
+              <td
+                class="element actinides-switch unknown"
+                data-name="darmstadtium">
+                Ds <small>Darmstadtium</small>
+              </td>
+              <td
+                class="element actinides-switch unknown"
+                data-name="roentgenium">
+                Rg <small>Roentgenium</small>
+              </td>
+              <td
+                class="element actinides-switch transition-metal"
+                data-name="copernicium">
+                Cn <small>Copernicium</small>
+              </td>
+              <td class="element actinides-switch unknown" data-name="nihonium">
+                Nh <small>Nihonium</small>
+              </td>
+              <td
+                class="element actinides-switch unknown"
+                data-name="flerovium">
+                Fl <small>Flerovium</small>
+              </td>
+              <td
+                class="element actinides-switch unknown"
+                data-name="moscovium">
+                Mc <small>Moscovium</small>
+              </td>
+              <td
+                class="element actinides-switch unknown"
+                data-name="livermorium">
+                Lv <small>Livermorium</small>
+              </td>
+              <td
+                class="element actinides-switch unknown"
+                data-name="tennessine">
+                Ts <small>Tennessine</small>
+              </td>
+              <td
+                class="element actinides-switch unknown"
+                data-name="oganesson">
+                Og <small>Oganesson</small>
+              </td>
+              <!-- ... ends in here -->
 
-            <!-- actinides -->
-            <td class="element actinide hide" data-name="actinium">
-              Ac <small>Actinium</small>
-            </td>
-            <td class="element actinide hide" data-name="thorium">
-              Th <small>Thorium</small>
-            </td>
-            <td class="element actinide hide" data-name="protactinium">
-              Pa <small>Protactinium</small>
-            </td>
-            <td class="element actinide hide" data-name="uranium">
-              U <small>Uranium</small>
-            </td>
-            <td class="element actinide hide" data-name="neptunium">
-              Np <small>Neptunium</small>
-            </td>
-            <td class="element actinide hide" data-name="plutonium">
-              Pu <small>Plutonium</small>
-            </td>
-            <td class="element actinide hide" data-name="americium">
-              Am <small>Americium</small>
-            </td>
-            <td class="element actinide hide" data-name="curium">
-              Cm <small>Curium</small>
-            </td>
-            <td class="element actinide hide" data-name="berkelium">
-              Bk <small>Berkelium</small>
-            </td>
-            <td class="element actinide hide" data-name="californium">
-              Cf <small>Californium</small>
-            </td>
-            <td class="element actinide hide" data-name="einsteinium">
-              Es <small>Einsteinium</small>
-            </td>
-            <td class="element actinide hide" data-name="fermium">
-              Fm <small>Fermium</small>
-            </td>
-            <td class="element actinide hide" data-name="mendelevium">
-              Md <small>Mendelevium</small>
-            </td>
-            <td class="element actinide hide" data-name="nobelium">
-              No <small>Nobelium</small>
-            </td>
-            <td class="element actinide hide" data-name="lawrencium">
-              Lr <small>Lawrencium</small>
-            </td>
-          </tr>
-        </table>
+              <!-- actinides -->
+              <td class="element actinide hide" data-name="actinium">
+                Ac <small>Actinium</small>
+              </td>
+              <td class="element actinide hide" data-name="thorium">
+                Th <small>Thorium</small>
+              </td>
+              <td class="element actinide hide" data-name="protactinium">
+                Pa <small>Protactinium</small>
+              </td>
+              <td class="element actinide hide" data-name="uranium">
+                U <small>Uranium</small>
+              </td>
+              <td class="element actinide hide" data-name="neptunium">
+                Np <small>Neptunium</small>
+              </td>
+              <td class="element actinide hide" data-name="plutonium">
+                Pu <small>Plutonium</small>
+              </td>
+              <td class="element actinide hide" data-name="americium">
+                Am <small>Americium</small>
+              </td>
+              <td class="element actinide hide" data-name="curium">
+                Cm <small>Curium</small>
+              </td>
+              <td class="element actinide hide" data-name="berkelium">
+                Bk <small>Berkelium</small>
+              </td>
+              <td class="element actinide hide" data-name="californium">
+                Cf <small>Californium</small>
+              </td>
+              <td class="element actinide hide" data-name="einsteinium">
+                Es <small>Einsteinium</small>
+              </td>
+              <td class="element actinide hide" data-name="fermium">
+                Fm <small>Fermium</small>
+              </td>
+              <td class="element actinide hide" data-name="mendelevium">
+                Md <small>Mendelevium</small>
+              </td>
+              <td class="element actinide hide" data-name="nobelium">
+                No <small>Nobelium</small>
+              </td>
+              <td class="element actinide hide" data-name="lawrencium">
+                Lr <small>Lawrencium</small>
+              </td>
+            </tr>
+          </table>
 
-        <div id="legend">
-          <span class="alkali">ALKALI METALS</span>
-          <span class="alkaline">ALKALINE EARTH METALS</span>
-          <span class="transition-metal">TRANSITION METALS</span>
-          <span class="post-transition-metal">POST-TRANSITION METALS</span>
-          <span class="metalloid">METALLOIDS</span>
-          <span class="nonmetal">OTHER NONMETALS</span>
-          <span class="halogen">HALOGEN</span>
-          <span class="unknown">UNKNOWN PROPERTIES</span>
-          <span class="noble-gas">NOBLE GASES</span>
-          <span class="lanthanide">LANTHANIDES</span>
-          <span class="actinide">ACTINIDES</span>
+          <div id="legend">
+            <span class="alkali">ALKALI METALS</span>
+            <span class="alkaline">ALKALINE EARTH METALS</span>
+            <span class="transition-metal">TRANSITION METALS</span>
+            <span class="post-transition-metal">POST-TRANSITION METALS</span>
+            <span class="metalloid">METALLOIDS</span>
+            <span class="nonmetal">OTHER NONMETALS</span>
+            <span class="halogen">HALOGEN</span>
+            <span class="unknown">UNKNOWN PROPERTIES</span>
+            <span class="noble-gas">NOBLE GASES</span>
+            <span class="lanthanide">LANTHANIDES</span>
+            <span class="actinide">ACTINIDES</span>
+          </div>
         </div>
       </main>
     </div>
@@ -672,7 +697,7 @@
         document.querySelectorAll(".lanthanides-switch").forEach(function (el) {
           el.classList.toggle("hide");
         });
-        document.querySelectorAll(".lanthanide").forEach(function (el) {
+        document.querySelectorAll("td.lanthanide").forEach(function (el) {
           el.classList.toggle("hide");
         });
       });
@@ -681,7 +706,7 @@
         document.querySelectorAll(".actinides-switch").forEach(function (el) {
           el.classList.toggle("hide");
         });
-        document.querySelectorAll(".actinide").forEach(function (el) {
+        document.querySelectorAll("td.actinide").forEach(function (el) {
           el.classList.toggle("hide");
         });
       });
