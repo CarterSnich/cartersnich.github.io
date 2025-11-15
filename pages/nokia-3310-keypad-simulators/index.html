@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nokia 3310 Keypad Simulator with Vue</title>
+
+    <link rel="stylesheet" href="../../assets/css/font.css" />
+    <link rel="stylesheet" href="../../assets/css/reset.css" />
+    <link rel="stylesheet" href="../../assets/css/style.css" />
+
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <div id="app">
+      <div id="nav">
+        <div class="links">
+          <a href="/#pages">Home</a>
+          <div class="separator"></div>
+          <div class="page-name">Nokia 3310 Keypad Simulator with Vue</div>
+        </div>
+        <div id="theme-toggle">
+          <a href="#" id="light-toggle" class="active">Light</a>
+          <div class="separator"></div>
+          <a href="#" id="dark-toggle">Dark</a>
+        </div>
+      </div>
+      <main>
+        <div id="phone">
+          <div id="screen">
+            {{ content }}{{ input }}<span id="ibeam"></span>
+          </div>
+
+          <div id="controls">
+            <button @click="del">C</button>
+            <button>Select</button>
+            <button>Up</button>
+            <button>Down</button>
+          </div>
+
+          <div id="keypad">
+            <button @click="press('1')">1<br /><br /></button>
+            <button @click="press('abc2')">2<br />abc</button>
+            <button @click="press('def3')">3<br />def</button>
+
+            <button @click="press('ghi4')">4<br />ghi</button>
+            <button @click="press('jkl5')">5<br />jkl</button>
+            <button @click="press('mno6')">6<br />mno</button>
+
+            <button @click="press('pqrs7')">7<br />pqrs</button>
+            <button @click="press('tuv8')">8<br />tuv</button>
+            <button @click="press('wxyz9')">9<br />wxyz</button>
+
+            <button @click="press('*')">*</button>
+            <button @click="press(' 0')">
+              0<br /><i class="nf-icon">󱁐</i>
+            </button>
+            <button @click="press('#')">#</button>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <script src="../../assets/script/theme-toggle.js"></script>
+
+    <script src="vue.global.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
