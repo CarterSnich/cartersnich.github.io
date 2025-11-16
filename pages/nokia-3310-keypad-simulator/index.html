@@ -29,7 +29,9 @@
       <main>
         <div id="phone">
           <div id="screen">
-            {{ content }}{{ input }}<span id="ibeam"></span>
+            <span v-html="content"></span>
+            <span v-html="input"></span>
+            <span id="ibeam"></span>
           </div>
 
           <div id="controls">

@@ -12,7 +12,7 @@ createApp({
     }
 
     function commit() {
-      content.value += input.value;
+      content.value += input.value === " " ? "&nbsp;" : input.value;
       input.value = "";
       i.value = 0;
     }
