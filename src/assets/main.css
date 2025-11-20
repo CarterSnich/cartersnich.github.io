@@ -1,0 +1,43 @@
+@import "./base.css";
+
+body {
+  background-color: var(--background);
+  color: var(--text);
+}
+
+.card-group {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  align-items: stretch;
+  grid-auto-flow: row dense;
+  gap: 1rem;
+  box-sizing: border-box;
+
+  .card {
+    display: flex;
+    flex-direction: column;
+    color: var(--text);
+    background-color: var(--background);
+    border: 2px solid var(--border);
+    padding: 1rem;
+    gap: 1rem;
+
+    .card-img {
+      margin-bottom: 1rem;
+    }
+
+    .card-title {
+      font-size: 1.5rem;
+    }
+  }
+
+  .card:hover,
+  .card:focus {
+    color: white;
+  }
+}
+
+.nf-icon {
+  font-family: "Anonymice Pro Nerd Font";
+  padding-right: 0.25rem;
+}

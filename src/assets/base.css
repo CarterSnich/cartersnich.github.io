@@ -1,4 +1,33 @@
-@import url(colors.css);
+@import "./font.css";
+
+:root {
+  --background: white;
+  --text: black;
+  --primary: blue;
+  --active: darkblue;
+  --border: black;
+  --code: deeppink;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: black;
+    --text: white;
+    --border: white;
+  }
+}
+
+body {
+  min-height: 100vh;
+  color: var(--text);
+  background: var(--background);
+  line-height: 1.4;
+  font-family: "Anonymice Pro Nerd Font", sans-serif;
+  font-size: 15px;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
 
 * {
   scroll-behavior: smooth;
@@ -22,14 +51,13 @@ a {
   padding-inline: 4px;
 }
 
-a:hover,
-a:focus {
+a:hover {
   color: white;
   background-color: blue !important;
 }
 
 a:active {
-  color: white !important;
+  color: white;
   background-color: darkblue !important;
 }
 
