@@ -1,24 +1,17 @@
 <script setup lang="ts">
 import { RouterLink } from 'vue-router';
+import router, { routes } from "@/router/index";
+
+const childrenRoutes = routes[2]?.children?.slice(1, routes[2]?.children.length);
 
 </script>
 
 <template>
   <main>
     <h1>Random Things</h1>
-
     <div>
-      <RouterLink to="/random-things/linux-distro-log">
-        My Linux Distro Log
-      </RouterLink>
-      <RouterLink to="/random-things/periodic-table">
-        Periodic Table
-      </RouterLink>
-      <RouterLink to="/random-things/nokia-3310-keypad-simulator">
-        Nokia 3310 Keypad Simulator
-      </RouterLink>
-      <RouterLink to="/random-things/brewstyper">
-        Brewstyper
+      <RouterLink v-for="cr in childrenRoutes" :to="`/random-things/${cr.path}`">
+        {{ cr.meta?.title }}
       </RouterLink>
     </div>
   </main>
