@@ -67,8 +67,10 @@ function onType(e: KeyboardEvent) {
   }
 
   if (e.key === "Backspace") {
-    typingIndex.value--;
-    return;
+    if (typingIndex.value > 0) {
+      typingIndex.value--;
+      return;
+    }
   }
 
   if (e.key.toLowerCase() === currentPhrase.value[typingIndex.value]) {
