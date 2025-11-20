@@ -2,7 +2,7 @@ name: Deploy Vue to GitHub Pages
 
 on:
   push:
-    branches: [ main ]  # deploy every time main is updated
+    branches: [ main ]
 
 jobs:
   build:
@@ -26,8 +26,8 @@ jobs:
       - name: Upload build artifacts
         uses: actions/upload-pages-artifact@v3
         with:
-          path: dist   # Vue build output folder
-          
+          path: dist
+
   deploy:
     needs: build
     runs-on: ubuntu-latest
@@ -35,6 +35,11 @@ jobs:
       pages: write
       id-token: write
 
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
     steps:
       - name: Deploy to GitHub Pages
+        id: deployment
         uses: actions/deploy-pages@v4
