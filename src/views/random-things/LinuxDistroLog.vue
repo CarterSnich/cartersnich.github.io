@@ -3,8 +3,9 @@
     <h1>Joe Mar's Linux Distro Log</h1>
     <ol>
       <li>
-        <b><span class="nf-icon"></span> Kali Linux</b>
-        <small><i>circa 2018</i></small>
+        <span>
+          <i class="nf-icon"></i> <b>Kali Linux</b> <small>(circa 2018)</small>
+        </span>
         <ul>
           <li>
             Thought <strong>Kali Linux</strong> = <strong>Linux</strong> 😭
@@ -17,29 +18,30 @@
         </ul>
       </li>
       <li>
-        <b><span class="nf-icon">󰕈</span> Ubuntu</b>
-        <small><i>circa 2019</i></small>
+        <span>
+          <i class="nf-icon">󰕈</i> <b>Ubuntu</b> <small>(circa 2019)</small>
+        </span>
         <ul>
           <li>"Beginner's friend", they say</li>
           <li>
-            Wondered why there was an <strong>Amazon</strong> icon on the
+            Wondered why there was an <i class="nf-icon"></i> <strong>Amazon</strong> icon on the
             quick launch bar 👀
           </li>
           <li>
             Stayed for about a month, then went back to
-            <strong>Windows</strong>
+            <i class="nf-icon"></i> <strong>Windows</strong>
           </li>
         </ul>
       </li>
       <li>
-        <b><span class="nf-icon"></span> Manjaro</b>
-        <small><i>November 2023 - October 2024</i></small>
+        <span>
+          <i class="nf-icon"></i> <b>Manjaro</b> <small>(November 2023 - October 2024)</small>
+        </span>
         <ul>
           <li>Another "beginner's friend" - I said 😎</li>
           <li>
             Installed it on a test PC, then moved its SSD to my main PC
-            after
-            <strong>Windows</strong> forgot how <strong>Wi-Fi</strong> works
+            after <i class="nf-icon"></i> <strong>Windows</strong> forgot how <strong>Wi-Fi</strong> works
             mid-presentation 💀
           </li>
           <li>Never went back to <strong>Windoze</strong></li>
@@ -51,8 +53,9 @@
         </ul>
       </li>
       <li>
-        <b><span class="nf-icon"></span> EndeavourOS</b>
-        <small><i>October 2024 - until my main computer died ⚰️</i></small>
+        <span>
+          <i class="nf-icon"></i> <b>EndeavourOS</b> <small>(October 2024 - until my main computer died ⚰️)</small>
+        </span>
         <ul>
           <li>
             <code>pacman -Sybau</code> and "Hip hip hoo-<code>yay</code>!"
@@ -68,18 +71,16 @@
         </ul>
       </li>
       <li>
-        <b><span class="nf-icon"></span> Debian</b>
-        <small>
-          <i>After main computer's death - about 6 months of use</i>
-        </small>
+        <span>
+          <i class="nf-icon"></i> <b>Debian</b> <small>(after my main computer's death - about 6 months of use)</small>
+        </span>
         <ul>
           <li>
-            Found an ancient netbook and tried <strong>Artix</strong>,
-            <strong>Xubuntu</strong>, and <strong>Debian</strong>
+            Found an ancient netbook and tried <i class="nf-icon"></i> <strong>Artix</strong>, <strong>Xubuntu</strong>, and <i class="nf-icon"></i> <strong>Debian</strong>
           </li>
           <li>
-            <strong>Artix</strong> and <strong>Debian</strong> both worked,
-            but I went with <strong>Debian</strong> for a new taste
+            <i class="nf-icon"></i> <strong>Artix</strong> and <i class="nf-icon"></i> <strong>Debian</strong> both worked,
+            but I went with the latter for a new taste
           </li>
           <li>
             Stable, until the first update screwed a
@@ -97,8 +98,9 @@
         </ul>
       </li>
       <li>
-        <b><span class="nf-icon"></span> Void Linux</b>
-        <small><i>July 2025 - present</i></small>
+        <span>
+          <i class="nf-icon"></i> <b>Void Linux</b> <small>(July 2025 - present)</small>
+        </span>
         <ul>
           <li>
             Got a new computer, so I entered the <strong>Void</strong> 🪐
@@ -125,5 +127,9 @@ main {
 
 ol>li {
   margin-bottom: 1rem;
+}
+
+ol>li>span>small {
+  font-style: italic;
 }
 </style>
