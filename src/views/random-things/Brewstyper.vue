@@ -55,44 +55,45 @@ const typer = useTemplateRef("typer")
 
 function onType(e: KeyboardEvent) {
   const timeOfPress = new Date();
+  const pressedKey = e.key.toLowerCase();
 
-  if (!startTime.value) {
-    startTime.value = timeOfPress;
-    timeDisplayDaemon.value = setInterval(() => {
-      if (startTime.value) {
-        const now = new Date();
-        timeDisplay.value = `${now.getTime() - startTime.value.getTime()}ms`;
+  switch (pressedKey) {
+    case "backspace":
+      if (typingIndex.value > 0) {
+        typingIndex.value--;
       }
-    }, 10);
-  }
-
-  if (e.key === "Backspace") {
-    if (typingIndex.value > 0) {
-      typingIndex.value--;
       return;
-    }
+
+    default:
+      if (!startTime.value) {
+        startTime.value = timeOfPress;
+        timeDisplayDaemon.value = setInterval(() => {
+          if (startTime.value) {
+            const now = new Date();
+            timeDisplay.value = `${now.getTime() - startTime.value.getTime()}ms`;
+          }
+        }, 10);
+      }
+
+      typingProgress.value[typingIndex.value] = pressedKey === currentPhrase.value[typingIndex.value];
+
+      if (typingIndex.value === currentPhrase.value.length - 1) {
+        clearInterval(timeDisplayDaemon.value)
+        endTime.value = new Date();
+        isDone.value = true;
+
+        // calculate results
+        duration.value = (endTime.value.getTime() ?? 0) - (startTime.value.getTime() ?? 0)
+        characterCount.value = currentPhrase.value.length
+        correctCount.value = typingProgress.value.filter(v => v).length;
+        mistakesCount.value = typingProgress.value.length - correctCount.value;
+        accuracy.value = Math.round(((correctCount.value / currentPhrase.value.length) * 100) * 100) / 100
+      } else {
+        typingIndex.value++;
+      }
+      break;
   }
 
-  if (e.key.toLowerCase() === currentPhrase.value[typingIndex.value]) {
-    typingProgress.value[typingIndex.value] = true;
-  } else {
-    typingProgress.value[typingIndex.value] = false;
-  }
-
-  if (typingIndex.value === currentPhrase.value.length - 1) {
-    clearInterval(timeDisplayDaemon.value)
-    endTime.value = new Date();
-    isDone.value = true;
-
-    // calculate results
-    duration.value = (endTime.value.getTime() ?? 0) - (startTime.value.getTime() ?? 0)
-    characterCount.value = currentPhrase.value.length
-    correctCount.value = typingProgress.value.filter(v => v).length;
-    mistakesCount.value = typingProgress.value.length - correctCount.value;
-    accuracy.value = Math.round(((correctCount.value / currentPhrase.value.length) * 100) * 100) / 100
-  } else {
-    typingIndex.value++;
-  }
 }
 
 function reset() {
