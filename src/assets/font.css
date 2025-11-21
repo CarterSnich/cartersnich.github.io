@@ -1,36 +1,39 @@
 /* Anonymice Pro Nerd Font */
 @font-face {
   font-family: "Anonymice Pro Nerd Font";
-  src: url(font/AnonymousPro/AnonymiceProNerdFont-Regular.ttf) format(truetype);
+  src: url("@/assets/font/AnonymousPro/AnonymiceProNerdFont-Regular.woff2")
+    format("woff2");
   font-weight: 200;
   font-style: normal;
 }
 
 @font-face {
   font-family: "Anonymice Pro Nerd Font";
-  src: url(font/AnonymousPro/AnonymiceProNerdFont-Bold.ttf) format(truetype);
+  src: url("@/assets/font/AnonymousPro/AnonymiceProNerdFont-Bold.woff2")
+    format("woff2");
   font-weight: 900;
   font-style: normal;
 }
 
 @font-face {
   font-family: "Anonymice Pro Nerd Font";
-  src: url(font/AnonymousPro/AnonymiceProNerdFont-Italic.ttf) format(truetype);
+  src: url("@/assets/font/AnonymousPro/AnonymiceProNerdFont-Italic.woff2")
+    format("woff2");
   font-weight: 200;
   font-style: italic;
 }
 
 @font-face {
   font-family: "Anonymice Pro Nerd Font";
-  src: url(font/AnonymousPro/AnonymiceProNerdFont-BoldItalic.ttf)
-    format(truetype);
+  src: url("@/assets/font/AnonymousPro/AnonymiceProNerdFont-BoldItalic.woff2")
+    format("woff2");
   font-weight: 900;
   font-style: italic;
 }
 
 @font-face {
   font-family: "Nokia Cellphone FC";
-  src: url(font/nokia_cellphone/nokiafc22.ttf);
+  src: url("@/assets/font/nokia_cellphone/nokiafc22.woff2") format("woff2");
   font-weight: normal;
   font-style: normal;
 }
