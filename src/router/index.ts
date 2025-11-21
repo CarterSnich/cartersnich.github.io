@@ -59,6 +59,13 @@ export const routes: RouteRecordRaw[] = [
         },
         component: Brewstyper,
       },
+      {
+        path: "calendar",
+        meta: {
+          title: "Calendar",
+        },
+        component: Calendar,
+      },
     ],
   },
 ];
