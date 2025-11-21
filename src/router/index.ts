@@ -11,6 +11,7 @@ import Nokia3310KeypadSimulator from "@/views/random-things/Nokia3310KeypadSimul
 import PeriodicTable from "@/views/random-things/PeriodicTable.vue";
 import Brewstyper from "@/views/random-things/Brewstyper.vue";
 import Calendar from "@/views/random-things/Calendar.vue";
+import BasicCSS from "@/views/random-things/BasicCSS.vue";
 
 export const routes: RouteRecordRaw[] = [
   {
@@ -65,6 +66,13 @@ export const routes: RouteRecordRaw[] = [
           title: "Calendar",
         },
         component: Calendar,
+      },
+      {
+        path: "basic-css",
+        meta: {
+          title: "BasicCSS",
+        },
+        component: BasicCSS,
       },
     ],
   },

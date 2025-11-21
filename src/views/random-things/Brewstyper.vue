@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { randomPickFromArray } from '@/lib/utils';
-import { nextTick, ref, useTemplateRef } from 'vue';
+import { randomPickFromArray } from "@/lib/utils";
+import { nextTick, ref, useTemplateRef } from "vue";
 
 const PHRASES = [
   "oh so were feeding the whole goddamn neighborhood are we",
@@ -35,23 +35,22 @@ const PHRASES = [
 ];
 
 const currentPhrase = ref<string[]>(randomPickFromArray(PHRASES));
-const typingProgress = ref<boolean[]>([])
+const typingProgress = ref<boolean[]>([]);
 const typingIndex = ref(0);
 const isDone = ref(false);
 
 const startTime = ref<Date>();
 const endTime = ref<Date>();
 const timeDisplay = ref("0ms");
-const timeDisplayDaemon = ref<number>()
+const timeDisplayDaemon = ref<number>();
 
-const duration = ref(0)
-const characterCount = ref(0)
-const correctCount = ref(0)
-const mistakesCount = ref(0)
-const accuracy = ref(0.0)
+const duration = ref(0);
+const characterCount = ref(0);
+const correctCount = ref(0);
+const mistakesCount = ref(0);
+const accuracy = ref(0.0);
 
-const typer = useTemplateRef("typer")
-
+const typer = useTemplateRef("typer");
 
 function onType(e: KeyboardEvent) {
   const timeOfPress = new Date();
@@ -70,42 +69,48 @@ function onType(e: KeyboardEvent) {
         timeDisplayDaemon.value = setInterval(() => {
           if (startTime.value) {
             const now = new Date();
-            timeDisplay.value = `${now.getTime() - startTime.value.getTime()}ms`;
+            timeDisplay.value = `${
+              now.getTime() - startTime.value.getTime()
+            }ms`;
           }
         }, 10);
       }
 
-      typingProgress.value[typingIndex.value] = pressedKey === currentPhrase.value[typingIndex.value];
+      typingProgress.value[typingIndex.value] =
+        pressedKey === currentPhrase.value[typingIndex.value];
 
       if (typingIndex.value === currentPhrase.value.length - 1) {
-        clearInterval(timeDisplayDaemon.value)
+        clearInterval(timeDisplayDaemon.value);
         endTime.value = new Date();
         isDone.value = true;
 
         // calculate results
-        duration.value = (endTime.value.getTime() ?? 0) - (startTime.value.getTime() ?? 0)
-        characterCount.value = currentPhrase.value.length
-        correctCount.value = typingProgress.value.filter(v => v).length;
+        duration.value =
+          (endTime.value.getTime() ?? 0) - (startTime.value.getTime() ?? 0);
+        characterCount.value = currentPhrase.value.length;
+        correctCount.value = typingProgress.value.filter((v) => v).length;
         mistakesCount.value = typingProgress.value.length - correctCount.value;
-        accuracy.value = Math.round(((correctCount.value / currentPhrase.value.length) * 100) * 100) / 100
+        accuracy.value =
+          Math.round(
+            (correctCount.value / currentPhrase.value.length) * 100 * 100
+          ) / 100;
       } else {
         typingIndex.value++;
       }
       break;
   }
-
 }
 
 function reset() {
   currentPhrase.value = randomPickFromArray(PHRASES);
-  typingProgress.value = []
-  typingIndex.value = 0
-  isDone.value = false
+  typingProgress.value = [];
+  typingIndex.value = 0;
+  isDone.value = false;
 
-  startTime.value = undefined
-  endTime.value = undefined
-  timeDisplay.value = "0ms"
-  clearInterval(timeDisplayDaemon.value)
+  startTime.value = undefined;
+  endTime.value = undefined;
+  timeDisplay.value = "0ms";
+  clearInterval(timeDisplayDaemon.value);
   timeDisplayDaemon.value = undefined;
 
   duration.value = 0;
@@ -115,21 +120,33 @@ function reset() {
   accuracy.value = 0;
 
   nextTick(() => {
-    typer.value?.focus()
-  })
+    typer.value?.focus();
+  });
 }
 </script>
 <template>
   <main>
-    <section id="typing-area" @keypress="onType" @keydown.delete="onType" v-if="!isDone">
+    <section
+      id="typing-area"
+      @keypress="onType"
+      @keydown.delete="onType"
+      v-if="!isDone">
       <div id="hud">
-        <div>time:&nbsp;<span id="time-display">{{ timeDisplay }}</span></div>
-        <button type="button" id="random-phrase" @click="reset">random phrase</button>
+        <div>time: {{ timeDisplay }}</div>
+        <button type="button" id="random-phrase" @click="reset">
+          random phrase
+        </button>
       </div>
       <div ref="typer" id="typer" tabindex="1" type="text" autofocus>
         <div id="text" class="0">
           <template v-for="n in currentPhrase.length">
-            <span :data-index="n - 1" :class="{ correct: typingProgress[n - 1], wrong: typingProgress[n - 1] === false, current: typingIndex === n - 1 }">
+            <span
+              :data-index="n - 1"
+              :class="{
+                correct: typingProgress[n - 1],
+                wrong: typingProgress[n - 1] === false,
+                current: typingIndex === n - 1,
+              }">
               {{ currentPhrase[n - 1] }}
             </span>
           </template>
@@ -140,48 +157,43 @@ function reset() {
       <table>
         <tbody>
           <tr>
-            <td>duration: </td>
+            <td>duration:</td>
             <td>{{ duration }}ms</td>
           </tr>
           <tr>
-            <td>character count: </td>
+            <td>character count:</td>
             <td>{{ characterCount }}</td>
           </tr>
           <tr>
-            <td>correct count: </td>
+            <td>correct count:</td>
             <td>{{ correctCount }}</td>
           </tr>
           <tr>
-            <td>mistake count: </td>
+            <td>mistake count:</td>
             <td>{{ mistakesCount }}</td>
           </tr>
           <tr>
-            <td>accuracy: </td>
+            <td>accuracy:</td>
             <td>{{ accuracy }}%</td>
           </tr>
         </tbody>
       </table>
-
       <button type="button" id="play-again" @click="reset">play again</button>
     </section>
   </main>
 </template>
 
 <style scoped>
-button {
-  font-family: inherit;
-  font-size: 1rem;
-  max-width: fit-content;
-  padding: .25rem 1.75rem;
+main {
+  min-width: 100vw;
+  display: flex;
 }
 
 #typing-area {
-  height: 100vh;
   display: flex;
   flex-direction: column;
-  gap: 5rem;
-  padding: 10rem;
-  box-sizing: border-box;
+  width: 100%;
+  padding: 100px;
 }
 
 #hud {
@@ -191,10 +203,10 @@ button {
 }
 
 #typer {
-  display: flex;
-  align-items: start;
-  justify-content: center;
   flex-grow: 1;
+  display: grid;
+  place-content: center;
+  padding-bottom: 3rem;
 }
 
 #typer:focus {
@@ -205,7 +217,7 @@ button {
   text-align: center;
 }
 
-#text>span {
+#text > span {
   font-size: 2rem;
   white-space: break-spaces;
 }
@@ -220,32 +232,32 @@ button {
   }
 }
 
-#typer:focus #text>span.current {
+#typer:focus #text > span.current {
   border-bottom: 3px solid black;
   animation: blinking infinite alternate 500ms;
 }
 
-
-#text>span.correct {
+#text > span.correct {
   background-color: green;
 }
 
-#text>span.wrong {
+#text > span.wrong {
   background-color: red;
 }
 
 #results {
-  height: 100vh;
   display: grid;
   place-content: center;
   font-size: 1.5rem;
+
+  width: 100%;
 }
 
-table tr>td:nth-child(1) {
+table tr > td:nth-child(1) {
   border-right: 5rem solid transparent;
 }
 
-table tr>td:nth-child(2) {
+table tr > td:nth-child(2) {
   text-align: right;
 }
 

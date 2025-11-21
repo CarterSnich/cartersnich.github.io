@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import { RouterLink } from 'vue-router';
-
+import { RouterLink } from "vue-router";
 </script>
 
 <template>
@@ -18,6 +17,7 @@ import { RouterLink } from 'vue-router';
       <a href="#">Dark</a>
     </div>
   </header>
+
   <RouterView />
 </template>
 
@@ -49,8 +49,6 @@ header {
     color: var(--background);
     background-color: var(--text);
   }
-
-
 }
 
 .separator {
@@ -73,7 +71,6 @@ header {
   a:active {
     background-color: darkblue !important;
   }
-
 
   #light-toggle {
     color: white;

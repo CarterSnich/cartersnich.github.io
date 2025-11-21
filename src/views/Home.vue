@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import { ref, onMounted, onBeforeUnmount, type VNodeRef } from 'vue';
-import me from "@/assets/me.jpg"
+import { ref, onMounted, onBeforeUnmount, type VNodeRef } from "vue";
+import me from "@/assets/me.jpg";
 
 const names = ref<HTMLElement | null>(null);
-const nameChangeInterval = ref<number>()
+const nameChangeInterval = ref<number>();
 
 function nameChange() {
   const current = names.value?.querySelector(".show");
@@ -17,15 +17,15 @@ function resetNameChangeInterval() {
   nameChange();
   clearInterval(nameChangeInterval.value);
   nameChangeInterval.value = setInterval(nameChange, 3000);
-};
+}
 
 onMounted(() => {
   nameChangeInterval.value = setInterval(nameChange, 3000);
-})
+});
 
 onBeforeUnmount(() => {
-  clearInterval(nameChangeInterval.value)
-})
+  clearInterval(nameChangeInterval.value);
+});
 </script>
 
 <template>
@@ -33,7 +33,12 @@ onBeforeUnmount(() => {
     <section id="hero">
       <img :src="me" alt="me" />
       <div id="title">
-        <h1 ref="names" id="names" @click="resetNameChangeInterval" title="Click me to see more of my aliases" tabindex="0">
+        <h1
+          ref="names"
+          id="names"
+          @click="resetNameChangeInterval"
+          title="Click me to see more of my aliases"
+          tabindex="0">
           <span class="show">Joe Mar Estrera Closa</span>
           <span>CarterSnich</span>
           <span>rootless</span>
@@ -50,28 +55,27 @@ onBeforeUnmount(() => {
     <section id="about-me">
       <h2>About me</h2>
       <p>
-        Hi! I'm an aspiring software developer passionate about building for
-        the web and mobile platforms.
+        Hi! I'm an aspiring software developer passionate about building for the
+        web and mobile platforms.
       </p>
       <p>
         I enjoy working with frameworks like React, Vue, and Laravel for web
-        development, as well as React Native, Expo, and Flutter for mobile
-        apps.
+        development, as well as React Native, Expo, and Flutter for mobile apps.
       </p>
       <p>
         I'm also deeply interested in computer servicing and Linux
-        configuration. Linux is my daily driver—currently Void Linux—and I
-        love fine-tuning my system to suit my workflow. Check out my
+        configuration. Linux is my daily driver—currently Void Linux—and I love
+        fine-tuning my system to suit my workflow. Check out my
         <a href="linux-distro-log.html">Linux distro log</a>.
       </p>
       <p>
         Outside of software, I spend time exploring with electronics and
-        programming microcontrollers using Arduino and MicroPython. It's a
-        great way to connect software with hardware in creative ways.
+        programming microcontrollers using Arduino and MicroPython. It's a great
+        way to connect software with hardware in creative ways.
       </p>
       <p>
-        I also like tinkering with random things and trying to fix them —
-        mostly out of curiosity, even when I'm not sure I can.
+        I also like tinkering with random things and trying to fix them — mostly
+        out of curiosity, even when I'm not sure I can.
       </p>
     </section>
 
@@ -81,25 +85,43 @@ onBeforeUnmount(() => {
         <div class="skill-category">
           <h3>Web Development</h3>
           <ul>
-            <li><span><i class="nf-icon"></i> Vue</span></li>
-            <li><span><i class="nf-icon"></i> React</span></li>
-            <li><span><i class="nf-icon"></i> Laravel</span></li>
-            <li><span><i class="nf-icon"></i> Flask</span></li>
+            <li>
+              <span><i class="nf-icon"></i> Vue</span>
+            </li>
+            <li>
+              <span><i class="nf-icon"></i> React</span>
+            </li>
+            <li>
+              <span><i class="nf-icon"></i> Laravel</span>
+            </li>
+            <li>
+              <span><i class="nf-icon"></i> Flask</span>
+            </li>
           </ul>
         </div>
         <div class="skill-category">
           <h3>Mobile App Development</h3>
           <ul>
-            <li><span><i class="nf-icon"></i> React Native</span></li>
-            <li><span><i class="nf-icon"></i> Flutter</span></li>
+            <li>
+              <span><i class="nf-icon"></i> React Native</span>
+            </li>
+            <li>
+              <span><i class="nf-icon"></i> Flutter</span>
+            </li>
           </ul>
         </div>
         <div class="skill-category">
           <h3>Storage Systems</h3>
           <ul>
-            <li><span><i class="nf-icon"></i> MySQL</span></li>
-            <li><span><i class="nf-icon"></i> MongoDB</span></li>
-            <li><span><i class="nf-icon"></i> Firebase</span></li>
+            <li>
+              <span><i class="nf-icon"></i> MySQL</span>
+            </li>
+            <li>
+              <span><i class="nf-icon"></i> MongoDB</span>
+            </li>
+            <li>
+              <span><i class="nf-icon"></i> Firebase</span>
+            </li>
           </ul>
         </div>
       </div>
@@ -127,21 +149,23 @@ onBeforeUnmount(() => {
       </p>
       <p>
         Phone:
-        <a href="tel:+639619601674" target="_blank"><i class="nf-icon"></i> +63 (961) 9601 674</a>
+        <a href="tel:+639619601674" target="_blank"
+          ><i class="nf-icon"></i> +63 (961) 9601 674</a
+        >
       </p>
     </section>
-
   </main>
 </template>
 
 <style scoped>
 section {
-  min-height: 100vh;
+  box-sizing: border-box;
   padding: 3rem;
   scroll-snap-align: start;
 }
 
 #hero {
+  height: 90vh;
   display: grid;
   place-content: center;
   text-align: center;
@@ -187,14 +211,19 @@ section {
       color: var(--text);
       background-color: var(--background);
       border: 2px solid var(--border);
-      padding: .25rem 1rem;
+      padding: 0.25rem 1rem;
       outline: none;
       font-size: 1.25rem;
+    }
+
+    a:focus {
+      border-color: blue;
     }
   }
 }
 
-#about-me {}
+#about-me {
+}
 
 #skills {
   display: flex;
@@ -213,20 +242,19 @@ section {
     }
 
     ul {
-      li>span {
+      li > span {
         cursor: default;
-        padding: .25rem 1rem;
+        padding: 0.25rem 1rem;
       }
 
-      li>span:hover {
+      li > span:hover {
         color: var(--background);
         background-color: var(--text);
       }
-
-
     }
   }
 }
 
-#contact {}
+#contact {
+}
 </style>

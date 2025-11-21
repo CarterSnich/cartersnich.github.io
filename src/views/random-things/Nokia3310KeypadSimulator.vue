@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref } from "vue";
 
 const content = ref("");
 const currentVals = ref("");
@@ -64,9 +64,7 @@ function press(vals: string) {
         <button @click="press('wxyz9')">9<br />wxyz</button>
 
         <button @click="press('*')">*</button>
-        <button @click="press(' 0')">
-          0<br /><i class="nf-icon">󱁐</i>
-        </button>
+        <button @click="press(' 0')">0<br /><i class="nf-icon">󱁐</i></button>
         <button @click="press('#')">#</button>
       </div>
     </div>
@@ -75,7 +73,6 @@ function press(vals: string) {
 
 <style scoped>
 main {
-  height: 100vh;
   display: grid;
   place-content: center;
 }
@@ -117,7 +114,6 @@ main {
 }
 
 @keyframes blink {
-
   0%,
   50% {
     opacity: 1;
@@ -147,15 +143,14 @@ main {
   gap: 4px;
 }
 
-#keypad>button {
+#keypad > button {
   height: 56px;
   font-size: 1.25rem;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
 
-@media (pointer: none),
-(pointer: coarse) {
+@media (pointer: none), (pointer: coarse) {
   body {
     display: contents;
   }
@@ -169,6 +164,5 @@ main {
 
     flex-direction: column;
   }
-
 }
 </style>
