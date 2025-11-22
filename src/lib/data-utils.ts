@@ -10,23 +10,33 @@ export function getDaysArray(year: number, month: number) {
 }
 
 /**
- * Create a calenday layout.
+ * Create a calendar layout.
  * @param date
- * @returns array
+ * @returns Date[]
  */
-export function makeCalendar(date: Date): number[] {
+export function makeCalendar(date: Date): Date[] {
   const year = date.getFullYear();
   const month = date.getMonth();
 
-  const days = getDaysArray(year, month);
-  const daysInMonth = days.length;
-  console.log(days);
+  const daysInMonth = new Date(year, month + 1, 0).getDate();
 
   const firstDay = new Date(year, month, 1).getDay();
   const lastDay = new Date(year, month, daysInMonth).getDay();
 
-  const prefix = Array(firstDay).fill(null);
-  const suffix = Array(6 - lastDay).fill(null);
+  const prefix = Array.from(
+    { length: firstDay },
+    (_, i) => new Date(year, month, -i)
+  ).reverse();
+
+  const days = Array.from(
+    { length: daysInMonth },
+    (_, i) => new Date(year, month, i + 1)
+  );
+
+  const suffix = Array.from(
+    { length: 6 - lastDay },
+    (_, i) => new Date(year, month, daysInMonth + i + 1)
+  );
 
   return [...prefix, ...days, ...suffix];
 }
