@@ -1,5 +1,15 @@
 <script setup lang="ts">
 import { RouterLink } from "vue-router";
+
+import { useDark, useToggle } from "@vueuse/core";
+
+const isDark = useDark({
+  selector: "html",
+  attribute: "color-scheme",
+  valueDark: "dark",
+  valueLight: "light",
+});
+const toggleDark = useToggle(isDark);
 </script>
 
 <template>
@@ -12,9 +22,16 @@ import { RouterLink } from "vue-router";
       <RouterLink to="/random-things">Random things</RouterLink>
     </div>
     <div id="theme-toggle">
-      <a href="#" class="active">Light</a>
+      <a
+        href="#"
+        :class="{ active: !isDark }"
+        @click.prevent="toggleDark(false)">
+        Light
+      </a>
       <div class="separator"></div>
-      <a href="#">Dark</a>
+      <a href="#" :class="{ active: isDark }" @click.prevent="toggleDark(true)">
+        Dark
+      </a>
     </div>
   </header>
 
@@ -62,36 +79,14 @@ header {
   gap: 0.25rem;
   padding: 0.25rem;
 
-  a:hover,
-  a:focus {
-    color: white;
-    background-color: blue !important;
-  }
-
-  a:active {
-    background-color: darkblue !important;
-  }
-
-  #light-toggle {
-    color: white;
-    background-color: blue;
-  }
-
-  #dark-toggle {
-    color: var(--text);
-    background-color: var(--background);
-  }
-}
-
-html[data-theme="dark"] {
-  #light-toggle {
+  > a {
     color: var(--text);
     background-color: var(--background);
   }
 
-  #dark-toggle {
-    color: white;
-    background-color: blue;
+  > a.active {
+    color: var(--background);
+    background-color: var(--text);
   }
 }
 </style>

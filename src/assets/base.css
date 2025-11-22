@@ -1,20 +1,23 @@
 @import "./font.css";
 
-:root {
-  --background: white;
-  --text: black;
-  --primary: blue;
-  --active: darkblue;
-  --border: black;
-  --code: deeppink;
-}
-
 @media (prefers-color-scheme: dark) {
   :root {
     --background: black;
     --text: white;
     --border: white;
   }
+}
+
+html[color-scheme="light"] {
+  --background: white;
+  --text: black;
+  --border: black;
+}
+
+:root {
+  --primary: blue;
+  --active: darkblue;
+  --code: deeppink;
 }
 
 * {
@@ -123,6 +126,7 @@ textarea {
     border: 2px solid var(--border);
     padding: 1rem;
     gap: 1rem;
+    outline: none;
 
     .card-img {
       margin-bottom: 1rem;
@@ -133,8 +137,11 @@ textarea {
     }
   }
 
-  .card:hover,
+  .card:hover {
+    color: var(--text);
+  }
+
   .card:focus {
-    color: white;
+    border-color: var(--primary);
   }
 }
