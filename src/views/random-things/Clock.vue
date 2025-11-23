@@ -3,11 +3,20 @@ import { getTh } from '@/lib/utils';
 import { useDark, useToggle } from '@vueuse/core';
 import { computed, onMounted, ref } from 'vue';
 
+const FONTS = [
+  "Anonymice Pro Nerd Font",
+  "monospace",
+  "sans",
+  "serif",
+  "Nokia Cellphone FC",
+]
+
 const toggleDark = useToggle(useDark());
 
 const isToolbarHidden = ref(false)
 const is24Hour = ref(true);
 const isExtraInfoHidden = ref(false)
+const fontIndex = ref(0)
 
 const now = ref(new Date())
 const timeDisplay = computed(() => {
@@ -97,6 +106,14 @@ function onPressKeybinds(e: KeyboardEvent) {
       isExtraInfoHidden.value = !isExtraInfoHidden.value
       break;
 
+    case "o":
+      if (fontIndex.value >= FONTS.length - 1) {
+        fontIndex.value = 0;
+      } else {
+        fontIndex.value++;
+      }
+      break;
+
     default:
       // do supposed to do
       break;
@@ -113,8 +130,8 @@ onMounted(() => {
 </script>
 
 <template>
-  <main ref="main" @keydown="onPressKeybinds" tabindex="0">
-    <div id="time-display">{{ timeDisplay }}</div>
+  <main ref="main" @keydown="onPressKeybinds" tabindex="0" autofocus>
+    <div id="time-display" :style="{ 'font-family': FONTS[fontIndex] }">{{ timeDisplay }}</div>
     <div id="date-display">{{ dateDisplay }}</div>
     <small id="extra-info" v-if="!isExtraInfoHidden">
       <span>{{ extraInfo.tzName }} (UTC{{ extraInfo.tzOffset }})</span>
@@ -131,6 +148,7 @@ onMounted(() => {
       <span><code>D</code> Toggle dark mode</span>
       <span><code>H</code> Toggle 24-hour format</span>
       <span><code>I</code> Toggle extra info</span>
+      <span><code>O</code> Change font</span>
     </div>
   </main>
 </template>
@@ -172,8 +190,6 @@ main {
 
 }
 
-
-
 #toolbar {
   position: fixed;
   left: 0;
@@ -184,7 +200,6 @@ main {
 
   display: flex;
   gap: 1rem;
-
 }
 
 #toolbar.hidden {
