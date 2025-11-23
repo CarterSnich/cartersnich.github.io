@@ -126,7 +126,7 @@ onMounted(() => {
       <span>Day {{ extraInfo.dayOfYear }}</span>
       <span>Week {{ extraInfo.week }}</span>
       <span>Q{{ extraInfo.quarterOfYear }}</span>
-      <span>{{ extraInfo.isLeapYear ? "Leap" : "Commmon" }} year</span>
+      <span>{{ extraInfo.isLeapYear ? "Leap" : "Common" }} year</span>
       <span>{{ extraInfo.century }}<sup>{{ getTh(extraInfo.century) }}</sup> Century</span>
     </small>
 
