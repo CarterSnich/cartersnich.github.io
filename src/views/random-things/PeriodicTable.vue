@@ -511,9 +511,8 @@ function onElementClick(e: MouseEvent) {
         </tr>
       </tbody>
     </table>
-    <p>Is details null? {{ elementDetails }}</p>
-
   </main>
+
   <Modal :title="elementDetails?.name" :is-open="elementDetails !== null" @onClickClose="elementDetails = null">
     <pre>{{ elementDetails }}</pre>
   </Modal>
@@ -608,6 +607,10 @@ table {
     padding: 0.25rem;
     font-weight: bolder;
   }
+}
+
+pre {
+  margin: 0;
 }
 
 .hide {

@@ -31,25 +31,29 @@ const props = defineProps<{
   background-color: rgba(0, 0, 0, 50%);
   border: none;
 
-  display: grid;
+  display: flex;
   place-content: center;
+  padding: 3rem;
 
   z-index: 1;
 }
 
 .modal-dialog {
-  background: var(--background);
-  min-width: 300px;
-  margin: 3rem;
   display: flex;
   flex-direction: column;
+  margin: auto;
+
+  max-height: 100%;
+  min-width: 400px;
+
+  background: var(--background);
   border: 2px solid var(--border);
 }
 
 .modal-head {
   display: flex;
   align-items: center;
-  padding: 1rem;
+  padding: .5rem 1rem;
 
   h2 {
     margin: 0;
