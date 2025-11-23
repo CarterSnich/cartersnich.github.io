@@ -19,13 +19,10 @@ const toggleDark = useToggle(isDark);
       <div class="separator" />
       <RouterLink to="/projects">Projects</RouterLink>
       <div class="separator" />
-      <RouterLink to="/random-things">Random things</RouterLink>
+      <RouterLink to="/stuff-n-things">Stuff 'n Things</RouterLink>
     </div>
     <div id="theme-toggle">
-      <a
-        href="#"
-        :class="{ active: !isDark }"
-        @click.prevent="toggleDark(false)">
+      <a href="#" :class="{ active: !isDark }" @click.prevent="toggleDark(false)">
         Light
       </a>
       <div class="separator"></div>
@@ -79,12 +76,12 @@ header {
   gap: 0.25rem;
   padding: 0.25rem;
 
-  > a {
+  >a {
     color: var(--text);
     background-color: var(--background);
   }
 
-  > a.active {
+  >a.active {
     color: var(--background);
     background-color: var(--text);
   }

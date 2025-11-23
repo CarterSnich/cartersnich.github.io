@@ -4,7 +4,6 @@ import {
   type RouteRecordRaw,
 } from "vue-router";
 import HomeView from "@/views/Home.vue";
-import RandomThings from "@/views/RandomThings.vue";
 import Projects from "@/views/Projects.vue";
 import LinuxDistroLog from "@/views/random-things/LinuxDistroLog.vue";
 import Nokia3310KeypadSimulator from "@/views/random-things/Nokia3310KeypadSimulator.vue";
@@ -13,6 +12,7 @@ import Brewstyper from "@/views/random-things/Brewstyper.vue";
 import Calendar from "@/views/random-things/Calendar.vue";
 import BasicCSS from "@/views/random-things/BasicCSS.vue";
 import Clock from "@/views/random-things/Clock.vue";
+import StuffnThings from "@/views/StuffnThings.vue";
 
 export const routes: RouteRecordRaw[] = [
   {
@@ -26,12 +26,12 @@ export const routes: RouteRecordRaw[] = [
     component: Projects,
   },
   {
-    path: "/random-things",
+    path: "/stuff-n-things",
     children: [
       {
         path: "",
-        name: "random-things",
-        component: RandomThings,
+        name: "stuff-n-things",
+        component: StuffnThings,
       },
       {
         path: "linux-distro-log",

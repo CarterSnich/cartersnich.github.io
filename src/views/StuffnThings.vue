@@ -10,11 +10,9 @@ const childrenRoutes = routes[2]?.children?.slice(
 
 <template>
   <main>
-    <h1>Random Things</h1>
+    <h1>Stuff 'n Things</h1>
     <div>
-      <RouterLink
-        v-for="cr in childrenRoutes"
-        :to="`/random-things/${cr.path}`">
+      <RouterLink v-for="cr in childrenRoutes" :to="`/stuff-n-things/${cr.path}`">
         {{ cr.meta?.title }}
       </RouterLink>
     </div>
