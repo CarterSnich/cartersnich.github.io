@@ -12,6 +12,7 @@ import PeriodicTable from "@/views/random-things/PeriodicTable.vue";
 import Brewstyper from "@/views/random-things/Brewstyper.vue";
 import Calendar from "@/views/random-things/Calendar.vue";
 import BasicCSS from "@/views/random-things/BasicCSS.vue";
+import Clock from "@/views/random-things/Clock.vue";
 
 export const routes: RouteRecordRaw[] = [
   {
@@ -66,6 +67,13 @@ export const routes: RouteRecordRaw[] = [
           title: "Calendar",
         },
         component: Calendar,
+      },
+      {
+        path: "clock",
+        meta: {
+          title: "Clock",
+        },
+        component: Clock,
       },
       {
         path: "basic-css",

@@ -1,11 +1,12 @@
 @import "./font.css";
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: black;
-    --text: white;
-    --border: white;
-  }
+:root {
+  --background: white;
+  --text: black;
+  --border: black;
+  --primary: blue;
+  --active: darkblue;
+  --code: deeppink;
 }
 
 html[color-scheme="light"] {
@@ -14,10 +15,10 @@ html[color-scheme="light"] {
   --border: black;
 }
 
-:root {
-  --primary: blue;
-  --active: darkblue;
-  --code: deeppink;
+html[color-scheme="dark"] {
+  --background: black;
+  --text: white;
+  --border: white;
 }
 
 * {
@@ -109,6 +110,46 @@ textarea:focus {
 textarea {
   height: 200px;
   width: 400px;
+}
+
+.radio,
+.checkbox {
+  --size: 18px;
+
+  display: flex;
+  gap: 0.25rem;
+  padding: 0.25rem;
+
+  input[type="radio"],
+  input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    margin: 0;
+    height: var(--size);
+    width: var(--size);
+    position: relative;
+    padding: 0.25rem;
+    align-self: center;
+  }
+
+  input[type="radio"]::after,
+  input[type="checkbox"]::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  input[type="radio"]:checked::after {
+    background-color: white;
+    height: 10px;
+    width: 10px;
+  }
+
+  input[type="checkbox"]:checked::after {
+    content: "";
+  }
 }
 
 .card-group {
