@@ -5,13 +5,13 @@ import {
 } from "vue-router";
 import HomeView from "@/views/Home.vue";
 import Projects from "@/views/Projects.vue";
-import LinuxDistroLog from "@/views/random-things/LinuxDistroLog.vue";
-import Nokia3310KeypadSimulator from "@/views/random-things/Nokia3310KeypadSimulator.vue";
-import PeriodicTable from "@/views/random-things/PeriodicTable.vue";
-import Brewstyper from "@/views/random-things/Brewstyper.vue";
-import Calendar from "@/views/random-things/Calendar.vue";
-import BasicCSS from "@/views/random-things/BasicCSS.vue";
-import Clock from "@/views/random-things/Clock.vue";
+import LinuxDistroLog from "@/views/stuff-n-things/LinuxDistroLog.vue";
+import Nokia3310KeypadSimulator from "@/views/stuff-n-things/Nokia3310KeypadSimulator.vue";
+import PeriodicTable from "@/views/stuff-n-things/PeriodicTable.vue";
+import Brewstyper from "@/views/stuff-n-things/Brewstyper.vue";
+import Calendar from "@/views/stuff-n-things/Calendar.vue";
+import BasicCSS from "@/views/stuff-n-things/BasicCSS.vue";
+import Clock from "@/views/stuff-n-things/Clock.vue";
 import StuffnThings from "@/views/StuffnThings.vue";
 
 export const routes: RouteRecordRaw[] = [
