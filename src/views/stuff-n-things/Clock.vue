@@ -13,14 +13,10 @@ const FONTS = [
 
 const toggleDark = useToggle(useDark());
 
-// const isToolbarHidden = ref(false)
-// const is24Hour = ref(true);
-// const isExtraInfoHidden = ref(false)
-// const fontIndex = ref(0)
-
 const settings = useStorage("clock-settings", {
   istoolbarHidden: false,
   is24Hour: false,
+  showSeconds: false,
   isExtraInfoHidden: false,
   fontIndex: 0,
 });
@@ -30,7 +26,7 @@ const timeDisplay = computed(() => {
   return now.value.toLocaleTimeString(undefined, {
     hour: "2-digit",
     minute: "2-digit",
-    second: "2-digit",
+    second: settings.value.showSeconds ? "2-digit" : undefined,
     hour12: settings.value.is24Hour,
   });
 });
@@ -115,6 +111,10 @@ function onPressKeybinds(e: KeyboardEvent) {
       settings.value.is24Hour = !settings.value.is24Hour;
       break;
 
+    case "s":
+      settings.value.showSeconds = !settings.value.showSeconds;
+      break;
+
     case "i":
       settings.value.isExtraInfoHidden = !settings.value.isExtraInfoHidden;
       break;
@@ -167,6 +167,7 @@ onMounted(() => {
       <span><code>T</code> Toggle toolbar</span>
       <span><code>D</code> Toggle dark mode</span>
       <span><code>H</code> Toggle 24-hour format</span>
+      <span><code>S</code> Toggle show seconds</span>
       <span><code>I</code> Toggle extra info</span>
       <span><code>O</code> Change font</span>
     </div>
