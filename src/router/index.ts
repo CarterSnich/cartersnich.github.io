@@ -24,6 +24,9 @@ export const routes: RouteRecordRaw[] = [
     path: "/projects",
     name: "projects",
     component: Projects,
+    meta: {
+      title: "Projects",
+    },
   },
   {
     path: "/stuff-n-things",
@@ -32,55 +35,58 @@ export const routes: RouteRecordRaw[] = [
         path: "",
         name: "stuff-n-things",
         component: StuffnThings,
+        meta: {
+          title: "Stuff 'n Things",
+        },
       },
       {
         path: "linux-distro-log",
+        component: LinuxDistroLog,
         meta: {
           title: "My Linux Distro Log",
         },
-        component: LinuxDistroLog,
       },
       {
         path: "periodic-table",
+        component: PeriodicTable,
         meta: {
           title: "Periodic Table",
         },
-        component: PeriodicTable,
       },
       {
         path: "nokia-3310-keypad-simulator",
+        component: Nokia3310KeypadSimulator,
         meta: {
           title: "Nokia 3310 Keypad Simulator",
         },
-        component: Nokia3310KeypadSimulator,
       },
       {
         path: "brewstyper",
+        component: Brewstyper,
         meta: {
           title: "Brewstyper",
         },
-        component: Brewstyper,
       },
       {
         path: "calendar",
+        component: Calendar,
         meta: {
           title: "Calendar",
         },
-        component: Calendar,
       },
       {
         path: "clock",
+        component: Clock,
         meta: {
           title: "Clock",
         },
-        component: Clock,
       },
       {
         path: "basic-css",
+        component: BasicCSS,
         meta: {
           title: "BasicCSS",
         },
-        component: BasicCSS,
       },
     ],
   },
@@ -89,6 +95,13 @@ export const routes: RouteRecordRaw[] = [
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: routes,
+});
+
+router.beforeEach((to, from, next) => {
+  document.title = to.meta?.title
+    ? `${to.meta?.title} | Joe Mar's Portfolio`
+    : "Joe Mar's Portfolio";
+  next();
 });
 
 export default router;
