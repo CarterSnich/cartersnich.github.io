@@ -24,7 +24,7 @@ export function makeCalendar(date: Date): Date[] {
   const lastDay = new Date(year, month, daysInMonth).getDay();
 
   const prefix = Array.from(
-    { length: firstDay },
+    { length: firstDay ? firstDay : 7 },
     (_, i) => new Date(year, month, -i)
   ).reverse();
 
@@ -34,7 +34,7 @@ export function makeCalendar(date: Date): Date[] {
   );
 
   const suffix = Array.from(
-    { length: 6 - lastDay },
+    { length: 42 - (prefix.length + days.length) },
     (_, i) => new Date(year, month, daysInMonth + i + 1)
   );
 
