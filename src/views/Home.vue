@@ -1,6 +1,16 @@
 <script setup lang="ts">
 import { ref, onMounted, onBeforeUnmount, type VNodeRef } from "vue";
 import me from "@/assets/me.jpg";
+import alsoMe from "@/assets/also-me.jpg";
+
+const meFace = ref(me);
+function changeMeFace() {
+  if (meFace.value === me) {
+    meFace.value = alsoMe;
+  } else {
+    meFace.value = me;
+  }
+}
 
 const names = ref<HTMLElement | null>(null);
 const nameChangeInterval = ref<number>();
@@ -31,9 +41,19 @@ onBeforeUnmount(() => {
 <template>
   <main>
     <section id="hero">
-      <img :src="me" alt="me" />
+      <img
+        :src="meFace"
+        alt="me-face"
+        @click="changeMeFace"
+        tabindex="-1"
+        title="Try clicking me face " />
       <div id="title">
-        <h1 ref="names" id="names" @click="resetNameChangeInterval" title="Click me to see more of my aliases" tabindex="0">
+        <h1
+          ref="names"
+          id="names"
+          @click="resetNameChangeInterval"
+          title="Click me to see more of my aliases"
+          tabindex="-1">
           <span class="show">Joe Mar Estrera Closa</span>
           <span>CarterSnich</span>
           <span>rootless</span>
@@ -73,8 +93,11 @@ onBeforeUnmount(() => {
         out of curiosity, even when I'm not sure I can.
       </p>
       <p>
-        <i>"Who is CarterSnich?"</i> It actually comes from Snich Carter, my internet alias. I created the name for the game <b>Harvest Moon</b>.
-        "Snich" was inspired by <b>Stitch</b> from <i>Lilo & Stitch</i>, and the last name <b>Carter</b> was borrowed from one of the NPCs in the game — a priest also named Carter.
+        <i>"Who is CarterSnich?"</i> It actually comes from Snich Carter, my
+        internet alias. I created the name for the game <b>Harvest Moon</b>.
+        "Snich" was inspired by <b>Stitch</b> from <i>Lilo & Stitch</i>, and the
+        last name <b>Carter</b> was borrowed from one of the NPCs in the game —
+        a priest also named Carter.
       </p>
     </section>
 
@@ -148,7 +171,9 @@ onBeforeUnmount(() => {
       </p>
       <p>
         Phone:
-        <a href="tel:+639619601674" target="_blank"><i class="nf-icon"></i> +63 (961) 9601 674</a>
+        <a href="tel:+639619601674" target="_blank"
+          ><i class="nf-icon"></i> +63 (961) 9601 674</a
+        >
       </p>
     </section>
   </main>
@@ -170,6 +195,7 @@ section {
   img {
     height: 256px;
     margin: auto;
+    cursor: pointer;
   }
 
   #title {
@@ -219,7 +245,8 @@ section {
   }
 }
 
-#about-me {}
+#about-me {
+}
 
 #skills {
   display: flex;
@@ -238,12 +265,12 @@ section {
     }
 
     ul {
-      li>span {
+      li > span {
         cursor: default;
         padding: 0.25rem 1rem;
       }
 
-      li>span:hover {
+      li > span:hover {
         color: var(--background);
         background-color: var(--text);
       }
@@ -251,5 +278,6 @@ section {
   }
 }
 
-#contact {}
+#contact {
+}
 </style>
