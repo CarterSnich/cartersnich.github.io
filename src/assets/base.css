@@ -112,6 +112,12 @@ textarea {
   width: 400px;
 }
 
+kbd {
+  background-color: grey;
+  color: black;
+  padding: 0.25rem;
+}
+
 .radio,
 .checkbox {
   --size: 18px;

@@ -156,20 +156,19 @@ onMounted(() => {
       <span>Week {{ extraInfo.week }}</span>
       <span>Q{{ extraInfo.quarterOfYear }}</span>
       <span>{{ extraInfo.isLeapYear ? "Leap" : "Common" }} year</span>
-      <span
-        >{{ extraInfo.century
-        }}<sup>{{ getTh(extraInfo.century) }}</sup> Century</span
-      >
+      <span>
+        {{ extraInfo.century }}<sup>{{ getTh(extraInfo.century) }}</sup> Century
+      </span>
     </small>
 
     <div id="toolbar" :class="{ hidden: settings.istoolbarHidden }">
-      <span><code>F</code> Fullscreen</span>
-      <span><code>T</code> Toggle toolbar</span>
-      <span><code>D</code> Toggle dark mode</span>
-      <span><code>H</code> Toggle 24-hour format</span>
-      <span><code>S</code> Toggle show seconds</span>
-      <span><code>I</code> Toggle extra info</span>
-      <span><code>O</code> Change font</span>
+      <span><kbd>F</kbd> Fullscreen</span>
+      <span><kbd>T</kbd> Toggle toolbar</span>
+      <span><kbd>D</kbd> Toggle dark mode</span>
+      <span><kbd>H</kbd> Toggle 24-hour format</span>
+      <span><kbd>S</kbd> Toggle show seconds</span>
+      <span><kbd>I</kbd> Toggle extra info</span>
+      <span><kbd>O</kbd> Change font</span>
     </div>
   </main>
 </template>
