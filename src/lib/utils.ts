@@ -28,3 +28,11 @@ export function getTh(num: number) {
       return "th";
   }
 }
+
+/**
+ * Generate simple, unsecure random ID from combinations of A-Z, a-z and 0-9.
+ * @returns string 6-character random ID
+ */
+export function generateSimpleID() {
+  return Math.random().toString(36).slice(2, 8);
+}

@@ -13,6 +13,7 @@ import Calendar from "@/views/stuff-n-things/Calendar.vue";
 import BasicCSS from "@/views/stuff-n-things/BasicCSS.vue";
 import Clock from "@/views/stuff-n-things/Clock.vue";
 import StuffnThings from "@/views/StuffnThings.vue";
+import Notes from "@/views/stuff-n-things/Notes.vue";
 
 export const routes: RouteRecordRaw[] = [
   {
@@ -86,6 +87,13 @@ export const routes: RouteRecordRaw[] = [
         component: BasicCSS,
         meta: {
           title: "BasicCSS",
+        },
+      },
+      {
+        path: "notes",
+        component: Notes,
+        meta: {
+          title: "Notes",
         },
       },
     ],
