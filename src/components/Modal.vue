@@ -1,24 +1,26 @@
 <script setup lang="ts">
-const props = defineProps<{
+defineProps<{
   title?: string;
   isOpen: boolean;
-}>()
+}>();
 </script>
 
 <template>
-  <div class="modal" v-if="props.isOpen">
+  <div class="modal" v-if="isOpen">
     <div class="modal-dialog">
       <div class="modal-head">
-        <h2>{{ props.title }}</h2>
+        <h2>{{ title }}</h2>
         <button type="button" @click="$emit('onClickClose')">&times;</button>
       </div>
       <div class="modal-body">
-        <slot />
+        <slot name="body" />
+      </div>
+      <div class="modal-footer">
+        <slot name="footer" />
       </div>
     </div>
   </div>
 </template>
-
 
 <style scoped>
 .modal {
@@ -53,7 +55,7 @@ const props = defineProps<{
 .modal-head {
   display: flex;
   align-items: center;
-  padding: .5rem 1rem;
+  padding: 0.5rem 1rem;
 
   h2 {
     margin: 0;
@@ -70,6 +72,7 @@ const props = defineProps<{
     display: grid;
     place-content: center;
     padding: 1rem;
+    margin: 0;
   }
 }
 
@@ -82,5 +85,12 @@ const props = defineProps<{
   pre {
     margin: 0;
   }
+}
+
+.modal-footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem 1rem;
 }
 </style>
